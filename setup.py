@@ -12,6 +12,7 @@ def get_clock():
 
 def get_display():
     display = pygame.display.set_mode(c.DISPLAY_SIZE)
+    print(type(display))
     return display
 
 def get_game_states():
