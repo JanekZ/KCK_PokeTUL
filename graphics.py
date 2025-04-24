@@ -7,13 +7,7 @@ from builder import Builder
 class Graphics:
     def __init__(self) -> None:
         self.canvas = pygame.Surface(c.NATIVE_SIZE)
-
-        builder = Builder("empty")
-        builder.build()
-
-        self.layers = builder.get_layers()
-
-        self.update()
+        self.layers = []
 
     def render(self, display):
         self.canvas.fill((0,0,0))
@@ -31,3 +25,5 @@ class Graphics:
         for layer in self.layers:
             layer.update()
 
+    def set_layers(self, layers: list):
+        self.layers = layers
