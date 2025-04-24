@@ -1,11 +1,18 @@
 import pygame
 import constants as c
 
+from static_entity import StaticEntity
+from builder import Builder
+
 class Graphics:
     def __init__(self) -> None:
         self.canvas = pygame.Surface(c.NATIVE_SIZE)
 
-        self.layers = pygame.sprite.Group()
+        builder = Builder("empty")
+        builder.build()
+
+        self.layers = builder.get_layers()
+
         self.update()
 
     def render(self, display):
