@@ -35,7 +35,7 @@ class DLLStack:
     def remove(self, value: str) -> None:
         node = self.head
         while node is not None:
-            if node.value is value:
+            if node.value == value:
                 if node.prev is not None:
                     node.prev.next = node.next
                 if node.next is None:
