@@ -7,6 +7,7 @@ class Controller:
         self.display = display
         self.clock = clock
         self.game_states = game_states
+        self.previous_state = None
         self.state = self.game_states[starting_state]()
         self.event_handler = EventHandler()
         self.running = True
@@ -23,7 +24,7 @@ class Controller:
         self.clock.tick(c.FPS)
 
     def handle_events(self):
-        self.event_handler.handle_events()
+        self.event_handler.handle_events(self.state)
 
     def update_state(self):
         self.state.update()

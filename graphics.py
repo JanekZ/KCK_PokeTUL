@@ -1,9 +1,6 @@
 import pygame
 import constants as c
 
-from static_entity import StaticEntity
-from builder import Builder
-
 class Graphics:
     def __init__(self) -> None:
         self.canvas = pygame.Surface(c.NATIVE_SIZE)

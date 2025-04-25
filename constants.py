@@ -1,3 +1,5 @@
+from ctypes.wintypes import PUSHORT
+
 SCALE = 4
 FPS = 60
 SPEED = 1
@@ -21,3 +23,24 @@ CHARACTER_SCREEN_CENTER_HEIGHT = NATIVE_HEIGHT/2 - CHARACTER_HEIGHT/2
 MAIN_SCREEN = "MAIN_SCREEN"
 
 START_STATE = MAIN_SCREEN
+
+UP = "UP"
+DOWN = "DOWN"
+LEFT = "LEFT"
+RIGHT = "RIGHT"
+STOP = "STOP"
+
+MOVE_TRANSLATE = {UP: (0,-1),
+                  DOWN: (0,1),
+                  LEFT: (-1,0),
+                  RIGHT: (1,0),
+                  STOP: (0,0)}
+
+PUSH = "PUSH"
+POP = "POP"
+
+STATIC_CAMERA = "STATIC_CAMERA"
+
+BACKGROUND_LAYER = 0
+BUILDINGS_LAYER = 1
+CHARACTERS_LAYER = 2
