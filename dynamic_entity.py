@@ -1,5 +1,3 @@
-import pygame
-import constants as c
 from static_entity import StaticEntity
 
 
@@ -11,7 +9,7 @@ class DynamicEntity(StaticEntity):
 
     def update(self):
         super(DynamicEntity, self).update()
-        self.update_position_global()
+        #self.update_position_global()
 
     def update_position_global(self):
         self.x += self.d_x

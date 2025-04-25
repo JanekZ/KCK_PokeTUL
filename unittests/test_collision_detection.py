@@ -14,7 +14,7 @@ class TestCollisionDetection(unittest.TestCase):
         self.character.set_dimensions(50, 50)
         self.character.set_image((100, 200, 100))
         self.character.set_rect()
-        self.character.d_x, self.character.d_y = (1, 0)
+        self.d_x, self.d_y = (1, 0)
         #FULL COVER
         self.box1 = StaticEntity()
         self.box1.set_position(101, 100)
@@ -38,7 +38,7 @@ class TestCollisionDetection(unittest.TestCase):
         self.boxes.add(self.box2)
         self.boxes.add(self.box3)
 
-        self.detect = CollisionDetection(self.character, self.boxes)
+        self.detect = CollisionDetection(self.character, self.boxes, (self.d_x, self.d_y))
 
     def test_cloning(self):
         clone = self.detect.create_clone()
@@ -47,7 +47,7 @@ class TestCollisionDetection(unittest.TestCase):
         self.assertEqual( (clone.width, clone.height), (self.character.width, self.character.height) )
         self.assertEqual(clone.color, self.character.color)
         self.assertNotEqual( (clone.x, clone.y), (self.character.x, self.character.y) )
-        self.assertEqual( (clone.x, clone.y), (self.character.x + self.character.d_x, self.character.y + self.character.d_y) )
+        self.assertEqual( (clone.x, clone.y), (self.character.x + self.d_x, self.character.y + self.d_y) )
 
     def test_collisions(self):
         self.assertTrue(self.detect.check_collision()[0])

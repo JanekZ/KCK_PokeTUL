@@ -26,7 +26,7 @@ class Builder:
         self.buildings.add(building2)
 
         character = DynamicEntity()
-        character.set_position(100, 100)
+        character.set_position(100, 50)
         character.set_dimensions(50, 50)
         character.set_image((100, 200, 100))
         character.set_rect()
