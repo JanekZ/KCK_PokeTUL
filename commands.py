@@ -15,3 +15,7 @@ class RightCommand:
 class DownCommand:
     def execute(self, actor, action):
         actor.user_input(action, c.DOWN)
+
+class SpaceCommand:
+    def execute(self, actor, action):
+        actor.user_input(action)

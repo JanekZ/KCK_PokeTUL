@@ -2,16 +2,17 @@ import constants as c
 
 from graphics import Graphics
 from builder import Builder
-from Algorithms.dll_stack import DLLStack
+from algorithms.dll_stack import DLLStack
 from movement import Movement
 
 class GameState:
-    def __init__(self):
+    def __init__(self, data_file: str):
         self.is_done = False
+        self.next_state_name = None
 
         self.graphics = Graphics()
         self.movement_stack = DLLStack()
-        self.builder = Builder("Terrains/inside_terrain.txt")
+        self.builder = Builder(data_file)
         self.builder.build()
         self.movement_processing = Movement(self.builder.get_layers())
 
@@ -23,12 +24,15 @@ class GameState:
     def render(self, display):
         self.graphics.render(display)
 
-    def user_input(self, action: str, key: str):
+    def user_input(self, action: str, key: str|None = None):
         if action == c.PUSH:
             self.movement_stack.push(key)
-        elif action == c.POP:
+        if action == c.POP:
             on_top = self.movement_stack.top().value
             if on_top == key:
                 self.movement_stack.pop()
             else:
                 self.movement_stack.remove(key)
+        if action == c.CHANGE_STATE:
+            self.next_state_name = c.INSIDE_SCREEN
+            self.is_done = True
