@@ -7,6 +7,7 @@ class EventHandler:
         self.down_command = DownCommand()
         self.left_command = LeftCommand()
         self.right_command = RightCommand()
+        self.space_command = SpaceCommand()
 
 
     def handle_events(self, state):
@@ -30,6 +31,8 @@ class EventHandler:
                 self.left_command.execute(state, c.PUSH)
             if event.key == pygame.K_RIGHT:
                 self.right_command.execute(state, c.PUSH)
+            if event.key == pygame.K_SPACE:
+                self.space_command.execute(state, c.CHANGE_STATE)
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 self.up_command.execute(state, c.POP)

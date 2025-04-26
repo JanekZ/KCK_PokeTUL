@@ -1,6 +1,6 @@
 import unittest
-from Algorithms.dll_stack import DLLStack
-from Algorithms.dll_stack import Node
+from algorithms.dll_stack import DLLStack
+from algorithms.dll_stack import Node
 
 class TestMovement(unittest.TestCase):
     def test_node_initialization(self):

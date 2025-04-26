@@ -1,5 +1,5 @@
 import constants as c
-from Algorithms.collision_detection import CollisionDetection
+from algorithms.collision_detection import CollisionDetection
 
 class Movement:
     def __init__(self, layers):

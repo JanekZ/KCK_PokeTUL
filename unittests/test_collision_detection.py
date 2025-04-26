@@ -5,7 +5,7 @@ import pygame.sprite
 from dynamic_entity import DynamicEntity
 from dynamic_entity import StaticEntity
 
-from Algorithms.collision_detection import CollisionDetection
+from algorithms.collision_detection import CollisionDetection
 
 class TestCollisionDetection(unittest.TestCase):
     def setUp(self):

@@ -7,7 +7,7 @@ def main():
     display = setup.get_display()
     game_states = setup.get_game_states()
 
-    controller = setup.get_controller(display, clock, game_states, c.START_STATE)
+    controller = setup.get_controller(display, clock, game_states, c.MAIN_SCREEN)
     controller.run()
 
 

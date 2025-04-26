@@ -4,41 +4,36 @@ from static_entity import StaticEntity
 from dynamic_entity import DynamicEntity
 
 class Builder:
-    def __init__(self, data: str):
-        self.data = data
+    def __init__(self, build_file: str):
+        self.build_file = build_file
         self.backgrounds = pygame.sprite.Group()
         self.buildings = pygame.sprite.Group()
         self.characters = pygame.sprite.Group()
         self.layers = [self.backgrounds, self.buildings, self.characters]
 
     def build(self):
-        background = StaticEntity()
-        background.set_position(10, 10)
-        background.set_dimensions(c.NATIVE_WIDTH-20, c.NATIVE_HEIGHT-20)
-        background.set_image((255,255,255))
-        background.set_rect()
-        self.backgrounds.add(background)
+        with open(self.build_file, "r") as f:
+            for row in f:
+                line = row.split(" ")
+                line = [int(value) if idx >= 1 else value for idx, value in enumerate(line)]
+                box_type, x, y, width, height, r, g, b = line
+                if box_type in [c.BUILDING, c.BACKGROUND]:
+                    new_element  = StaticEntity()
+                else:
+                    new_element = DynamicEntity()
 
-        building = StaticEntity()
-        building.set_position(10, 10)
-        building.set_dimensions(20, 20)
-        building.set_image((100, 100, 100))
-        building.set_rect()
-        self.buildings.add(building)
+                new_element.set_position(x, y)
+                new_element.set_dimensions(width, height)
+                new_element.set_image((r,g,b))
+                new_element.set_rect()
 
-        building2 = StaticEntity()
-        building2.set_position(50, 50)
-        building2.set_dimensions(20, 20)
-        building2.set_image((200, 200, 200))
-        building2.set_rect()
-        self.buildings.add(building2)
+                if box_type == c.BUILDING:
+                    self.buildings.add(new_element)
+                elif box_type == c.BACKGROUND:
+                    self.backgrounds.add(new_element)
+                elif box_type == c.CHARACTER:
+                    self.characters.add(new_element)
 
-        character = DynamicEntity()
-        character.set_position(100, 50)
-        character.set_dimensions(c.CHARACTER_WIDTH, c.CHARACTER_HEIGHT)
-        character.set_image((100, 200, 100))
-        character.set_rect()
-        self.characters.add(character)
 
     def get_layers(self):
         return self.layers
