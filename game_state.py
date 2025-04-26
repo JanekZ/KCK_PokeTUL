@@ -11,7 +11,7 @@ class GameState:
 
         self.graphics = Graphics()
         self.movement_stack = DLLStack()
-        self.builder = Builder("Empty")
+        self.builder = Builder("Terrains/inside_terrain.txt")
         self.builder.build()
         self.movement_processing = Movement(self.builder.get_layers())
 
