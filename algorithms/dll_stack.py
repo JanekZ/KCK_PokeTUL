@@ -49,3 +49,6 @@ class DLLStack:
 
     def top(self) -> Node:
         return self.head
+
+    def clear(self):
+        self.head = None

@@ -44,3 +44,7 @@ class StaticEntity(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
+class Portal(StaticEntity):
+    def __init__(self, destination):
+        super(Portal, self).__init__()
+        self.destination = destination

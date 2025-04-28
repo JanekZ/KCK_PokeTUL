@@ -18,6 +18,14 @@ class GameState:
 
     def update(self):
         self.movement_processing.change_direction(self.movement_stack.head)
+
+        if self.movement_processing.jump is True:
+            self.movement_stack.clear()
+            self.next_state_name = self.movement_processing.jump_destination
+            self.is_done = True
+            self.movement_processing.jump = False
+            self.movement_processing.jump_destination = None
+
         self.graphics.set_layers(self.movement_processing.get_updated_layers())
         self.graphics.update()
 
@@ -28,11 +36,9 @@ class GameState:
         if action == c.PUSH:
             self.movement_stack.push(key)
         if action == c.POP:
-            on_top = self.movement_stack.top().value
-            if on_top == key:
-                self.movement_stack.pop()
-            else:
-                self.movement_stack.remove(key)
-        if action == c.CHANGE_STATE:
-            self.next_state_name = c.INSIDE_SCREEN
-            self.is_done = True
+            if self.movement_stack.top() is not None:
+                on_top = self.movement_stack.top().value
+                if on_top == key:
+                    self.movement_stack.pop()
+                else:
+                    self.movement_stack.remove(key)

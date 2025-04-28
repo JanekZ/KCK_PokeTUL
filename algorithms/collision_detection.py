@@ -22,6 +22,12 @@ class CollisionDetection:
         is_col = len(collisions) >= 1
         return is_col, len(collisions)
 
+    def check_collision_with_portal(self, layer: pygame.sprite.Group, ) -> tuple:
+        collisions = pygame.sprite.spritecollide(self.clone, layer, dokill=False)
+        is_col = len(collisions) >= 1
+        destination = collisions[0].destination if is_col else None
+        return is_col, destination
+
     def check_out_of_bounds(self, layer: pygame.sprite.Group, ) -> bool:
         is_col, _ = self.check_collision(layer)
         boundaries = [i for i in layer]
