@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, value: str) -> None:
+    def __init__(self, value: str):
         self.next: Node|None = None
         self.prev: Node|None = None
         self.value: str = value

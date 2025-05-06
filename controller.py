@@ -3,7 +3,7 @@ import constants as c
 from event_handler import EventHandler
 
 class Controller:
-    def __init__(self, display, clock, game_states, starting_state) -> None:
+    def __init__(self, display, clock, game_states, starting_state):
         """
         SETTING UP THE MAIN FUNCTIONALITY OF THE GAME ENGINE:
             Sets up class properties using given parameters.

@@ -2,7 +2,7 @@ import pygame
 import constants as c
 
 class Graphics:
-    def __init__(self) -> None:
+    def __init__(self):
         self.canvas = pygame.Surface(c.NATIVE_SIZE)
         self.layers = []
 

@@ -1,7 +1,7 @@
 import pygame
 
 class StaticEntity(pygame.sprite.Sprite):
-    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int]) -> None:
+    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int]):
         """
         CALLING SUPER INIT:
             Calling pygame.sprite.Sprite initializer for all the functionality of parent class.
@@ -49,7 +49,7 @@ class StaticEntity(pygame.sprite.Sprite):
         self.rect.y += self.d_y
 
 class Portal(StaticEntity):
-    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int], destination) -> None:
+    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int], destination):
         """
         CALLING SUPER INIT:
             Calling StaticEntity init to create proper object with all its properties.

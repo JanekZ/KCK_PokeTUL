@@ -7,7 +7,7 @@ from movement_processor import MovementProcessor
 
 
 class GameState:
-    def __init__(self, data_file: str) -> None:
+    def __init__(self, data_file: str):
         """
         STATUS:
             Class properties used for showing the current status of the state.

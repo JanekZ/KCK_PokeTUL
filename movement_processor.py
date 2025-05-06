@@ -2,7 +2,7 @@ import constants as c
 from algorithms.collision_detection import CollisionDetection
 
 class MovementProcessor:
-    def __init__(self, layers) -> None:
+    def __init__(self, layers):
         """
         SETTING UP:
             Camera mode states what kind of movement has to be done.

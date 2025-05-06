@@ -2,7 +2,7 @@ import pygame
 from dynamic_entity import DynamicEntity
 
 class CollisionDetection:
-    def __init__(self, obj: DynamicEntity, d_xy: tuple[int, int]) -> None:
+    def __init__(self, obj: DynamicEntity, d_xy: tuple[int, int]):
         """
         SETTING UP:
             Creation of class properties using parameters.
