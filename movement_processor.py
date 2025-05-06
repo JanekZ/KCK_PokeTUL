@@ -1,7 +1,7 @@
 import constants as c
 from algorithms.collision_detection import CollisionDetection
 
-class DirectionProcessing:
+class MovementProcessor:
     def __init__(self, layers):
         self.camera_mode = c.MOVING_CAMERA
         self.layers = layers
