@@ -23,13 +23,9 @@ class CollisionDetection:
 
         :return: Clone of the object with offset.
         """
-        clone = DynamicEntity()
         new_x = self.obj.rect.x + self.d_x
         new_y = self.obj.rect.y + self.d_y
-        clone.set_position(new_x, new_y)
-        clone.set_dimensions(self.obj.width, self.obj.height)
-        clone.set_image(self.obj.color)
-        clone.set_rect()
+        clone = DynamicEntity(new_x, new_y, self.obj.width, self.obj.height, self.obj.color)
         return clone
 
     def check_collision(self, layer: pygame.sprite.Group, ) -> tuple[bool, int]:

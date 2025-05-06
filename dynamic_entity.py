@@ -1,11 +1,8 @@
 from static_entity import StaticEntity
 
-
 class DynamicEntity(StaticEntity):
-    def __init__(self):
-        super(DynamicEntity, self).__init__()
-        self.d_x = 0
-        self.d_y = 0
+    def __init__(self, x, y, width, height, color):
+        super(DynamicEntity, self).__init__(x, y, width, height, color)
 
     def update(self):
         super(DynamicEntity, self).update()

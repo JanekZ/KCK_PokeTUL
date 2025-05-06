@@ -11,6 +11,10 @@ class Builder:
         self.portals = pygame.sprite.Group()
         self.characters = pygame.sprite.Group()
         self.layers = [self.backgrounds, self.buildings, self.portals, self.characters]
+        self.layers_dict = {c.BACKGROUND: self.backgrounds,
+                            c.BUILDING: self.buildings,
+                            c.PORTAL: self.portals,
+                            c.CHARACTER: self.characters}
 
     def build(self):
         with open(self.build_file, "r") as f:
@@ -18,27 +22,16 @@ class Builder:
                 line = row.rstrip().split(" ")
                 line = [int(value) if  8 > idx >= 1 else value for idx, value in enumerate(line)]
                 box_type, x, y, width, height, r, g, b = line[:8]
+
                 if box_type in [c.BUILDING, c.BACKGROUND]:
-                    new_element  = StaticEntity()
+                    new_element = StaticEntity(x, y, width, height, (r,g,b))
                 elif box_type == c.PORTAL:
                     portal_destination = line[8]
-                    new_element = Portal(portal_destination)
+                    new_element = Portal(x, y, width, height, (r,g,b), portal_destination)
                 else:
-                    new_element = DynamicEntity()
+                    new_element = DynamicEntity(x, y, width, height, (r,g,b))
 
-                new_element.set_position(x, y)
-                new_element.set_dimensions(width, height)
-                new_element.set_image((r,g,b))
-                new_element.set_rect()
-
-                if box_type == c.BUILDING:
-                    self.buildings.add(new_element)
-                elif box_type == c.BACKGROUND:
-                    self.backgrounds.add(new_element)
-                elif box_type == c.PORTAL:
-                    self.portals.add(new_element)
-                elif box_type == c.CHARACTER:
-                    self.characters.add(new_element)
+                self.layers_dict[box_type].add(new_element)
 
 
     def get_layers(self):
