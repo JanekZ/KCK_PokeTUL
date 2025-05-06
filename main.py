@@ -6,7 +6,7 @@ def main():
     clock = setup.get_clock()
     display = setup.get_display()
     game_states = setup.get_game_states()
-
+    # sets the controller and runs the main loop of the game
     controller = setup.get_controller(display, clock, game_states, c.MAIN_SCREEN)
     controller.run()
 

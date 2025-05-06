@@ -3,7 +3,7 @@ import constants as c
 from graphics import Graphics
 from builder import Builder
 from algorithms.dll_stack import DLLStack
-from movement import Movement
+from directionprocessing import DirectionProcessing
 
 class GameState:
     def __init__(self, data_file: str):
@@ -14,7 +14,7 @@ class GameState:
         self.movement_stack = DLLStack()
         self.builder = Builder(data_file)
         self.builder.build()
-        self.movement_processing = Movement(self.builder.get_layers())
+        self.movement_processing = DirectionProcessing(self.builder.get_layers())
 
     def update(self):
         self.movement_processing.change_direction(self.movement_stack.head)
