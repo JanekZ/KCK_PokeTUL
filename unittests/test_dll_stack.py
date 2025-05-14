@@ -2,52 +2,65 @@ import unittest
 from algorithms.dll_stack import DLLStack
 from algorithms.dll_stack import Node
 
-class TestMovement(unittest.TestCase):
-    def test_node_initialization(self):
-        value = "left"
-        node = Node(value)
-        self.assertIsNone(node.next)
-        self.assertIsNone(node.prev)
-        self.assertEqual(node.value, value)
+class TestDLLStack(unittest.TestCase):
+    def setUp(self):
+        self.node_init_value = "value"
+        self.init_node = Node(self.node_init_value)
+        self.init_dll_stack = DLLStack()
 
-    def test_dll_stack_initialization(self):
-        dll_stack = DLLStack()
-        self.assertIsNone(dll_stack.head)
+    def test_node_initialization_next_is_none(self):
+        self.assertIsNone(self.init_node.next)
 
-    def test_empty(self):
-        dll_stack = DLLStack()
-        self.assertTrue(dll_stack.is_empty())
+    def test_node_initialization_prev_is_none(self):
+        self.assertIsNone(self.init_node.prev)
 
-        value = "right"
-        dll_stack.push(value)
-        self.assertFalse(dll_stack.is_empty())
+    def test_node_initialization_value_check(self):
+        self.assertEqual(self.init_node.value, self.node_init_value)
 
-        dll_stack.pop()
-        self.assertTrue(dll_stack.is_empty())
+    def test_dll_stack_initialization_head_is_none(self):
+        self.assertIsNone(self.init_dll_stack.head)
+
+    def test_dll_stack_is_empty(self):
+        self.assertTrue(self.init_dll_stack.is_empty())
+
+    def test_dll_stack_is_not_empty(self):
+        self.init_dll_stack.push(self.node_init_value)
+        self.assertFalse(self.init_dll_stack.is_empty())
+
+    def test_dll_stack_is_empty_after_pop(self):
+        self.init_dll_stack.pop()
+        self.assertTrue(self.init_dll_stack.is_empty())
 
     def test_push(self):
         dll_stack = DLLStack()
 
-        value = "left"
-        dll_stack.push(value)
-        self.assertEqual(value, dll_stack.top().value)
-
+        value1 = "left"
         value2 = "right"
+        value3 = "top"
+
+        dll_stack.push(value1)
+        self.assertEqual(value1, dll_stack.top().value)
+
         dll_stack.push(value2)
         self.assertEqual(value2, dll_stack.top().value)
 
-        value3 = "top"
         dll_stack.push(value3)
         self.assertEqual(value3, dll_stack.top().value)
+
+    def test_pop_if_no_head(self):
+        dll_stack = DLLStack()
+        pop_value = dll_stack.pop()
+        self.assertIsNone(pop_value)
 
     def test_pop(self):
         dll_stack = DLLStack()
 
         value = "left"
-        dll_stack.push(value)
         value2 = "right"
-        dll_stack.push(value2)
         value3 = "top"
+
+        dll_stack.push(value)
+        dll_stack.push(value2)
         dll_stack.push(value3)
 
         self.assertEqual(value3, dll_stack.pop())
