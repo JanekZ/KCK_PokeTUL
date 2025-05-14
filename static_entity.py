@@ -1,3 +1,4 @@
+import constants as c
 import pygame
 
 class StaticEntity(pygame.sprite.Sprite):
@@ -49,7 +50,7 @@ class StaticEntity(pygame.sprite.Sprite):
         self.rect.y += self.d_y
 
 class Portal(StaticEntity):
-    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int], destination):
+    def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int], destination: str):
         """
         CALLING SUPER INIT:
             Calling StaticEntity init to create proper object with all its properties.
@@ -60,4 +61,7 @@ class Portal(StaticEntity):
         :param destination: Text value holding destinations name.
         """
         super(Portal, self).__init__(x, y, width, height, color)
+
         self.destination = destination
+        self.is_locked = False
+

@@ -1,6 +1,7 @@
 import constants as c
 
 from event_handler import EventHandler
+from algorithms.dll_stack import DLLStack
 
 class Controller:
     def __init__(self, display, clock, game_states, starting_state):
@@ -18,8 +19,15 @@ class Controller:
         self.display = display
         self.clock = clock
         self.game_states = game_states
+        """
         self.state = self.game_states[starting_state]()
         self.previous_state = None
+        """
+        
+        self.game_state_stack = DLLStack()
+        self.game_state_stack.push(self.game_states[starting_state]())
+        self.state = self.game_state_stack.top().value
+
         self.event_handler = EventHandler()
         self.running = True
 
@@ -61,6 +69,16 @@ class Controller:
             After change cleaning is needed, so that previous state doesn't end instantly.
         """
         self.state.update()
+
+        if self.state.is_done:
+            self.game_state_stack.top().value.is_done = False
+            if self.state.next_state_name == c.NO_JUMP:
+                self.game_state_stack.pop()
+            else:
+                self.game_state_stack.push( self.game_states[self.state.next_state_name]() )
+
+        self.state = self.game_state_stack.top().value
+        """
         if self.state.is_done and self.previous_state is None:
             self.previous_state = self.state
             self.state = self.game_states[self.previous_state.next_state_name]()
@@ -68,8 +86,8 @@ class Controller:
         elif self.state.is_done:
             self.state = self.previous_state
             self.previous_state = None
-
-
+        """
+    
     def render_state(self) -> None:
         """
         RENDER THE STATE:
