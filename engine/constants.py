@@ -28,6 +28,11 @@ MAIN_SCREEN = "MAIN_SCREEN"
 INSIDE_SCREEN = "INSIDE_SCREEN"
 SECOND_INSIDE_SCREEN = "SECOND_INSIDE_SCREEN"
 
+#GAME STATE TERRAIN LOAD DICTIONARY
+STATE_DICT = {MAIN_SCREEN: "engine/terrains/main_terrain.txt",
+              INSIDE_SCREEN: "engine/terrains/inside_terrain.txt",
+              SECOND_INSIDE_SCREEN: "engine/terrains/second_inside_terrain.txt"}
+
 # MOVEMENT DIRECTIONS
 UP = "UP"
 DOWN = "DOWN"

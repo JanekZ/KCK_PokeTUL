@@ -2,7 +2,7 @@ import constants as c
 from algorithms.collision_detection import CollisionDetection
 
 class MovementProcessor:
-    def __init__(self, layers):
+    def __init__(self, camera_mode: str) -> None:
         """
         SETTING UP:
             Camera mode states what kind of movement has to be done.
@@ -11,14 +11,13 @@ class MovementProcessor:
         STATUS INDICATORS
             Jump and jump destination show if change is needed.
 
-        :param layers: layers that will be rendered to the screen.
+        :param camera_mode: mode of the camera in current game state.
         """
-        self.camera_mode = c.STATIC_CAMERA
-        self.layers = layers
+        self.camera_mode = camera_mode
         self.jump = False
         self.jump_destination = None
 
-    def change_direction(self, top_node) -> None:
+    def change_direction(self, top_node, layers: list) -> None:
         """
         DIRECTION SET:
             Direction gets extracted from node. Then it gets translated to tuple with x and y-axis change.
@@ -41,43 +40,50 @@ class MovementProcessor:
             If collision is detected, all movement is stopped.
 
         :param top_node: Node containing direction.
+        :param layers: list containing all sprite groups
         """
-
         direction = top_node.value if top_node is not None else c.STOP
         d_xy = c.MOVE_TRANSLATE[direction]
 
-        characters = [character for character in self.layers[c.CHARACTERS_LAYER]]
+        characters = [character for character in layers[c.CHARACTERS_LAYER]]
         character = characters[0]
 
         collision_detector = CollisionDetection(character, d_xy)
 
-        is_collision_with_portal, destination = collision_detector.check_collision_with_portal(self.layers[c.PORTAL_LAYER])
+        is_collision_with_portal, destination = collision_detector.check_collision_with_portal(layers[c.PORTAL_LAYER])
         if is_collision_with_portal:
             self.jump = True
             self.jump_destination = destination
 
-        is_collision_with_building, num_of_collisions = collision_detector.check_collision(self.layers[c.BUILDINGS_LAYER])
-        is_out_of_bounds = collision_detector.check_out_of_bounds(self.layers[c.BACKGROUND_LAYER])
+        is_collision_with_building, num_of_collisions = collision_detector.check_collision(layers[c.BUILDINGS_LAYER])
+        is_out_of_bounds = collision_detector.check_out_of_bounds(layers[c.BACKGROUND_LAYER])
 
         if is_collision_with_building or is_out_of_bounds or is_collision_with_portal:
             if self.camera_mode == c.STATIC_CAMERA:
-                for obj in self.layers[c.CHARACTERS_LAYER]:
+                for obj in layers[c.CHARACTERS_LAYER]:
                     obj.d_x, obj.d_y = c.MOVE_TRANSLATE[c.STOP]
 
             if self.camera_mode == c.MOVING_CAMERA:
-                for layer in self.layers[:c.CHARACTERS_LAYER]:
+                for layer in layers[:c.CHARACTERS_LAYER]:
                     for obj in layer:
                         obj.d_x, obj.d_y = c.MOVE_TRANSLATE[c.STOP]
         else:
             if self.camera_mode == c.STATIC_CAMERA:
-                for obj in self.layers[c.CHARACTERS_LAYER]:
+                for obj in layers[c.CHARACTERS_LAYER]:
                     obj.d_x, obj.d_y = d_xy
             if self.camera_mode == c.MOVING_CAMERA:
-                for layer in self.layers[:c.CHARACTERS_LAYER]:
+                for layer in layers[:c.CHARACTERS_LAYER]:
                     for obj in layer:
                         obj.d_x, obj.d_y = -d_xy[0], -d_xy[1]
 
-# GETTERS AND SETTERS
-
-    def get_updated_layers(self) -> None:
-        return self.layers
+    def get_destination(self) -> str:
+        """
+        JUMP DESTINATION:
+            Function return jump destination of the newest collision with portal.
+            To ensure no mismatch between portals and their jump destination, reset of jump destination is needed.
+        :return: Returns jump destination
+        """
+        temp = self.jump_destination
+        self.jump_destination = None
+        self.jump = False
+        return temp

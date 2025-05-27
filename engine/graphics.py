@@ -2,14 +2,14 @@ import pygame
 import constants as c
 
 class Graphics:
-    def __init__(self):
+    def __init__(self, layers: list):
         """
         SETTING UP:
             Pygame Surface initialized with native screen size is used to create canvas.
             Layers will have all the elements that need to be rendered.
         """
         self.canvas = pygame.Surface(c.NATIVE_SIZE)
-        self.layers = []
+        self.layers = layers
 
     def render(self, display) -> None:
         """

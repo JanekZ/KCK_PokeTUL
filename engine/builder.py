@@ -3,36 +3,31 @@ import constants as c
 from static_entity import StaticEntity, Portal
 from dynamic_entity import DynamicEntity
 
-class Builder:
-    def __init__(self, build_file: str):
-        self.build_file = build_file
-        self.backgrounds = pygame.sprite.Group()
-        self.buildings = pygame.sprite.Group()
-        self.portals = pygame.sprite.Group()
-        self.characters = pygame.sprite.Group()
-        self.layers = [self.backgrounds, self.buildings, self.portals, self.characters]
-        self.layers_dict = {c.BACKGROUND: self.backgrounds,
-                            c.BUILDING: self.buildings,
-                            c.PORTAL: self.portals,
-                            c.CHARACTER: self.characters}
+def build(build_file: str) -> dict:
+    backgrounds = pygame.sprite.Group()
+    buildings = pygame.sprite.Group()
+    portals = pygame.sprite.Group()
+    characters = pygame.sprite.Group()
+    layers_dict = {c.BACKGROUND: backgrounds,
+                        c.BUILDING: buildings,
+                        c.PORTAL: portals,
+                        c.CHARACTER: characters}
 
-    def build(self):
-        with open(self.build_file, "r") as f:
-            for row in f:
-                line = row.rstrip().split(" ")
-                line = [int(value) if  8 > idx >= 1 else value for idx, value in enumerate(line)]
-                box_type, x, y, width, height, r, g, b = line[:8]
+    with open(build_file, "r") as f:
+        for row in f:
+            line = row.rstrip().split(" ")
+            line = [int(value) if  8 > idx >= 1 else value for idx, value in enumerate(line)]
+            box_type, x, y, width, height, r, g, b = line[:8]
 
-                if box_type in [c.BUILDING, c.BACKGROUND]:
-                    new_element = StaticEntity(x, y, width, height, (r,g,b))
-                elif box_type == c.PORTAL:
-                    portal_destination = line[8]
-                    new_element = Portal(x, y, width, height, (r,g,b), portal_destination)
-                else:
-                    new_element = DynamicEntity(x, y, width, height, (r,g,b))
+            if box_type in [c.BUILDING, c.BACKGROUND]:
+                new_element = StaticEntity(x, y, width, height, (r,g,b))
+            elif box_type == c.PORTAL:
+                portal_destination = line[8]
+                new_element = Portal(x, y, width, height, (r,g,b), portal_destination)
+            else:
+                new_element = DynamicEntity(x, y, width, height, (r,g,b))
 
-                self.layers_dict[box_type].add(new_element)
+            layers_dict[box_type].add(new_element)
 
 
-    def get_layers(self):
-        return self.layers
+    return list(layers_dict.values())

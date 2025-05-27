@@ -1,13 +1,12 @@
 import constants as c
 
 from graphics import Graphics
-from builder import Builder
 from algorithms.dll_stack import DLLStack
 from movement_processor import MovementProcessor
 
 
 class GameState:
-    def __init__(self, data_file: str):
+    def __init__(self, layers: dict):
         """
         STATUS:
             Class properties used for showing the current status of the state.
@@ -16,22 +15,19 @@ class GameState:
 
         IMPORTANT OBJECTS:
             Objects needed for proper functionality of the game state.
-            Graphics object that updates and renders all elements.
+            Graphics object that updates and renders and holds all elements.
             DLLStack object needed to maintain fluid change of movements direction.
-            Builder object that creates all the elements seen on display.
             MovementProcessor object that handles the change in direction.
 
-        :param data_file: Name of a file containing data needed to create all the objects used in this game state
+        :param layers: Dictionary of all the objects that need to be rendered on screen.
         """
         self.is_done = False
         self.next_state_name = None
 
-        self.graphics = Graphics()
+        self.graphics = Graphics(layers)
         self.movement_stack = DLLStack()
-        self.builder = Builder(data_file)
-        self.builder.build()
 
-        self.movement_processor = MovementProcessor(self.builder.get_layers())
+        self.movement_processor = MovementProcessor(c.STATIC_CAMERA)
 
     def update(self) -> None:
         """
@@ -48,16 +44,13 @@ class GameState:
             Graphics layers are updates using layers kept by movement processor.
             Graphics object updates all the layers.
         """
-        self.movement_processor.change_direction(self.movement_stack.head)
-
+        jump = False
+        self.movement_processor.change_direction(self.movement_stack.head, self.graphics.layers)
         if self.movement_processor.jump is True:
             self.movement_stack.clear()
-            self.next_state_name = self.movement_processor.jump_destination
+            self.next_state_name = self.movement_processor.get_destination()
             self.is_done = True
-            self.movement_processor.jump = False
-            self.movement_processor.jump_destination = None
 
-        self.graphics.set_layers(self.movement_processor.get_updated_layers())
         self.graphics.update()
 
     def render(self, display) -> None:

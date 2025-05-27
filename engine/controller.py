@@ -3,6 +3,8 @@ import constants as c
 from event_handler import EventHandler
 from algorithms.dll_stack import DLLStack
 
+from builder import build
+
 class Controller:
     def __init__(self, display, clock, game_states, starting_state):
         """
@@ -19,18 +21,24 @@ class Controller:
         self.display = display
         self.clock = clock
         self.game_states = game_states
-        """
-        self.state = self.game_states[starting_state]()
-        self.previous_state = None
-        """
-        
+
         self.game_state_stack = DLLStack()
-        self.game_state_stack.push(self.game_states[starting_state]())
+
+        self.start_state(starting_state)
         self.state = self.game_state_stack.top().value
 
         self.event_handler = EventHandler()
         self.running = True
 
+    def start_state(self, state_name) -> None:
+        """
+        NEW STATE START:
+            Initializes a new Game State object with dictionary of Entity objects as a parameter.
+            Makes a push to the stack.
+        
+        :param state_name: Name of the new state.
+        """
+        self.game_state_stack.push(self.game_states[state_name](build(c.STATE_DICT[state_name])))
 
     def run(self) -> None:
         """
@@ -71,22 +79,13 @@ class Controller:
         self.state.update()
 
         if self.state.is_done:
-            self.game_state_stack.top().value.is_done = False
             if self.state.next_state_name == c.NO_JUMP:
                 self.game_state_stack.pop()
             else:
-                self.game_state_stack.push( self.game_states[self.state.next_state_name]() )
+                self.game_state_stack.top().value.is_done = False
+                self.start_state(self.state.next_state_name)
 
         self.state = self.game_state_stack.top().value
-        """
-        if self.state.is_done and self.previous_state is None:
-            self.previous_state = self.state
-            self.state = self.game_states[self.previous_state.next_state_name]()
-            self.previous_state.is_done = False
-        elif self.state.is_done:
-            self.state = self.previous_state
-            self.previous_state = None
-        """
     
     def render_state(self) -> None:
         """
