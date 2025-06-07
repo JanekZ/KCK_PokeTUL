@@ -43,7 +43,7 @@ class Auth:
                     return True, session_id
 
             return False, "Invalid credentials"
-        except sqlite3.Error as e:
+        except sqlite3.Error:
             return False, "Database error"
 
     ''' A method to create new player '''
@@ -62,8 +62,30 @@ class Auth:
             return True, "Registration successful"
         except sqlite3.IntegrityError:
             return False, "Student already exists"
-        except sqlite3.Error as e:
+        except sqlite3.Error:
             return False, "Database error"
+
+    ''' A method to validate login session '''
+    def validate_session(self, session_id: str) -> bool:
+        try:
+            self._database.execute('''
+                SELECT 1
+                FROM sessions
+                WHERE id = ? AND player_id IN (
+                    SELECT id
+                    FROM players
+                    WHERE is_banned = 0
+                )
+            ''', (session_id,))
+
+            session = self._database.fetchone()
+
+            if session is not None:
+                return True
+
+            return False
+        except sqlite3.Error:
+            return False
 
     def __del__(self) -> None:
         self._connection.close()
