@@ -1,64 +1,94 @@
 import sqlite3
 
 def define() -> None:
-    ''' Defines a new database schema '''
+    ''' Creates a database schema for "game.db" '''
 
-    # Establish the connection to the 'game.db' database
+    # Establish connection to the database
     connection = sqlite3.connect("database/data/game.db")
     database = connection.cursor()
 
-    # Define the 'game.db' database schema
+    # Define 'players' table
     database.execute('''
         CREATE TABLE IF NOT EXISTS players (
             id INTEGER PRIMARY KEY NOT NULL UNIQUE,
             name TEXT NOT NULL,
             password TEXT NOT NULL,
             level INTEGER DEFAULT 1 NOT NULL,
-            last_position TEXT,
-            is_banned INTEGER DEFAULT 0 NOT NULL,
-            unlocked_buildings TEXT,
+            last_x REAL NOT NULL DEFAULT 0,
+            last_y REAL NOT NULL DEFAULT 0,
+            is_banned BOOLEAN DEFAULT 0 NOT NULL,
             created DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
 
+    # Define 'sessions' table
     database.execute('''
         CREATE TABLE IF NOT EXISTS sessions (
             id TEXT PRIMARY KEY UNIQUE,
-            FOREIGN KEY (player) REFERENCES players(id) NOT NULL
+            player_id INTEGER NOT NULL,
+            created DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (player_id) REFERENCES players(id)
         )
     ''')
 
+    # Define 'monsters' table
     database.execute('''
         CREATE TABLE IF NOT EXISTS monsters (
-            id INTEGER PRIMRAY KEY AUTOINCREMENT UNIQUE,
-            name TEXT NOT NULL,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            player_id INTEGER NOT NULL,
+            type_id INTEGER NOT NULL,
+            nickname TEXT,
             level INTEGER DEFAULT 1 NOT NULL,
-            FOREIGN KEY (player) REFERENCES players(id) NOT NULL
+            experience INTEGER DEFAULT 0 NOT NULL,
+            in_party BOOLEAN DEFAULT 0 NOT NULL,
+            FOREIGN KEY (player_id) REFERENCES players(id)
         )
     ''')
 
-    # Close the active connection
+    # Define 'inventory' table
+    database.execute('''
+        CREATE TABLE IF NOT EXISTS inventory (
+            player_id INTEGER NOT NULL,
+            item_id INTEGER NOT NULL,
+            quantity INTEGER DEFAULT 1 NOT NULL,
+            PRIMARY KEY (player_id, item_id),
+            FOREIGN KEY (player_id) REFERENCES players(id)
+        )
+    ''')
+
+    # Define 'progress' table
+    database.execute('''
+        CREATE TABLE IF NOT EXISTS progress (
+            player_id INTEGER NOT NULL,
+            building_id INTEGER NOT NULL,
+            discovered BOOLEAN DEFAULT 0 NOT NULL,
+            last_visited DATETIME,
+            PRIMARY KEY (player_id, building_id),
+            FOREIGN KEY (player_id) REFERENCES players(id)
+        )
+    ''')
+
+    # Commit changes
+    connection.commit()
+
+    # Close the connection
     connection.close()
 
 def delete() -> None:
-    ''' Deletes the database schema '''
+    ''' Deletes a database schema for "game.db" '''
 
-    # Establish the connection to the 'game.db' database
+    # Establish connection to the database
     connection = sqlite3.connect("database/data/game.db")
     database = connection.cursor()
 
-    # Define the 'game.db' database schema
-    database.execute('''
-        DROP TABLE IF EXISTS players
-    ''')
+    # Drop every existing table in the database
+    tables = ["players", "sessions", "monsters", "inventory", "progress"]
 
-    database.execute('''
-        DROP TABLE IF EXISTS sessions
-    ''')
+    for table in tables:
+        database.execute(f"DROP TABLE IF EXISTS {table}")
 
-    database.execute('''
-        DROP TABLE IF EXISTS monsters
-    ''')
+    # Commit changes
+    connection.commit()
 
-    # Close the active connection
+    # Close the connection
     connection.close()

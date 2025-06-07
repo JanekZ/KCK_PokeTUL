@@ -1,55 +1,78 @@
 import sqlite3
 
 def define() -> None:
-    ''' Defines a new database schema '''
+    ''' Creates a database schema for "constants.db" '''
 
-    # Establish the connection to the 'constants.db' database
+    # Establish connection to the database
     connection = sqlite3.connect("database/data/constants.db")
     database = connection.cursor()
 
-    # Define the 'constants.db' database schema
+    # Define 'buildings' table
     database.execute('''
-        CREATE TABLE IF NOT EXISTS objects (
-            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            layer TEXT NOT NULL,
-            x_position INTEGER NOT NULL,
-            y_position INTEGER NOT NULL,
-            width INTEGER NOT NULL,
-            height INTEGER NOT NULL,
-            red INTEGER NOT NULL,
-            green INTEGER NOT NULL,
-            blue INTEGER NOT NULL,
-            destination TEXT
+        CREATE TABLE IF NOT EXISTS buildings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            x REAL NOT NULL,
+            y REAL NOT NULL,
+            width REAL NOT NULL,
+            height REAL NOT NULL,
+            color TEXT NOT NULL DEFAULT '#FFFFFF'
         )
     ''')
 
+    # Define 'monster_types' table
     database.execute('''
-        CREATE TABLE IF NOT EXISTS enities (
-            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            type TEXT NOT NULL,
-            x_position INTEGER NOT NULL,
-            y_position INTEGER NOT NULL
+        CREATE TABLE IF NOT EXISTS monster_types (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            base_health INTEGER NOT NULL,
+            base_attack INTEGER NOT NULL,
+            base_defense INTEGER NOT NULL
         )
     ''')
 
-    # Close the active connection
+    # Define 'items' table
+    database.execute('''
+        CREATE TABLE IF NOT EXISTS items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            effect TEXT NOT NULL
+        )
+    ''')
+
+    # Define 'spawn_points' table
+    database.execute('''
+        CREATE TABLE IF NOT EXISTS spawn_points (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            building_id INTEGER NOT NULL,
+            x REAL NOT NULL,
+            y REAL NOT NULL,
+            spawn_rate REAL NOT NULL,
+            FOREIGN KEY (building_id) REFERENCES buildings(id)
+        )
+    ''')
+
+    # Commit changes
+    connection.commit()
+
+    # Close the connection
     connection.close()
 
 def delete() -> None:
-    ''' Deletes the database schema '''
+    ''' Deletes a database schema for "constants.db" '''
 
-    # Establish the connection to the 'constants.db' database
+    # Establish connection to the database
     connection = sqlite3.connect("database/data/constants.db")
     database = connection.cursor()
 
-    # Define the 'constants.db' database schema
-    database.execute('''
-        DROP TABLE IF EXISTS objects
-    ''')
+    # Drop every existing table in the database
+    tables = ["buildings", "monster_types", "items", "spawn_points"]
 
-    database.execute('''
-        DROP TABLE IF EXISTS entities
-    ''')
+    for table in tables:
+        database.execute(f"DROP TABLE IF EXISTS {table}")
 
-    # Close the active connection
+    # Commit changes
+    connection.commit()
+
+    # Close the connection
     connection.close()
