@@ -4,10 +4,13 @@ import secrets
 import time
 
 class Auth:
+    ''' A High Abstraction Layer class for handling players authentication '''
+
     def __init__(self) -> None:
         self._connection = sqlite3.connect("database/data/game.db")
         self._database = self._connection.cursor()
 
+    ''' A method to create a login session '''
     def login(self, player_id: int, password: str) -> tuple[bool, str]:
         try:
             self._database.execute('''
@@ -43,6 +46,7 @@ class Auth:
         except sqlite3.Error as e:
             return False, "Database error"
 
+    ''' A method to create new player '''
     def register(self, index: int, name: str, password: str) -> tuple[bool, str]:
         try:
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
