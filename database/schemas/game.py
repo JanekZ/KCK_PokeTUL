@@ -14,9 +14,10 @@ def define() -> None:
             name TEXT NOT NULL,
             password TEXT NOT NULL,
             level INTEGER DEFAULT 1 NOT NULL,
-            last_x REAL NOT NULL DEFAULT 0,
-            last_y REAL NOT NULL DEFAULT 0,
-            is_banned BOOLEAN DEFAULT 0 NOT NULL,
+            last_x INTEGER DEFAULT 0,
+            last_y INTEGER DEFAULT 0,
+            is_banned INTEGER DEFAULT 0 NOT NULL,
+            unlocked_buildings TEXT,
             created DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
@@ -40,7 +41,6 @@ def define() -> None:
             nickname TEXT,
             level INTEGER DEFAULT 1 NOT NULL,
             experience INTEGER DEFAULT 0 NOT NULL,
-            in_party BOOLEAN DEFAULT 0 NOT NULL,
             FOREIGN KEY (player_id) REFERENCES players(id)
         )
     ''')
