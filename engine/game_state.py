@@ -27,7 +27,7 @@ class GameState:
         self.graphics = Graphics(layers)
         self.movement_stack = DLLStack()
 
-        self.movement_processor = MovementProcessor(c.STATIC_CAMERA)
+        self.movement_processor = MovementProcessor(c.MOVING_CAMERA)
 
     def update(self) -> None:
         """
