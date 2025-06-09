@@ -1,4 +1,4 @@
-import constants as c
+import engine.constants as c
 import pygame
 
 class StaticEntity(pygame.sprite.Sprite):
@@ -64,4 +64,3 @@ class Portal(StaticEntity):
 
         self.destination = destination
         self.is_locked = False
-

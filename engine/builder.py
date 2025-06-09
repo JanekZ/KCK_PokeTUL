@@ -1,7 +1,7 @@
 import pygame
-import constants as c
-from static_entity import StaticEntity, Portal
-from dynamic_entity import DynamicEntity
+import engine.constants as c
+from engine.static_entity import StaticEntity, Portal
+from engine.dynamic_entity import DynamicEntity
 
 def build(build_file: str) -> dict:
     backgrounds = pygame.sprite.Group()
