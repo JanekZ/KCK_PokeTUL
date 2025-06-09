@@ -8,6 +8,7 @@ class Auth:
 
     def __init__(self) -> None:
         self._connection = sqlite3.connect("database/data/game.db")
+        self._connection.row_factory = sqlite3.Row
         self._database = self._connection.cursor()
 
     ''' A method to create a login session '''
@@ -22,14 +23,14 @@ class Auth:
             player = self._database.fetchone()
 
             if player is not None:
-                is_banned = player.get("is_banned")
+                is_banned = player["is_banned"]
 
                 if is_banned:
                     return False, "Account suspended"
 
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-                if secrets.compare_digest(hashed_password, player.get("password")):
+                if secrets.compare_digest(hashed_password, player["password"]):
                     session_id = secrets.token_urlsafe(32)
 
                     self._database.execute('''

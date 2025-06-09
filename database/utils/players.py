@@ -9,6 +9,7 @@ class Players:
 
     def __init__(self) -> None:
         self._connection = sqlite3.connect("database/data/game.db")
+        self._connection.row_factory = sqlite3.Row
         self._database = self._connection.cursor()
 
     def get_player(self, player_id: int) -> Optional[dict[str, Any]]:
@@ -91,7 +92,7 @@ class Players:
             unlocked_buildings = self._database.fetchone()
 
             if unlocked_buildings is not None:
-                unlocked_buildings = json.loads(unlocked_buildings.get("unlocked_buildings"))
+                unlocked_buildings = json.loads(unlocked_buildings["unlocked_buildings"])
             else:
                 unlocked_buildings = []
 
@@ -125,7 +126,7 @@ class Players:
             unlocked_buildings = self._database.fetchone()
 
             if unlocked_buildings is not None:
-                return json.loads(unlocked_buildings.get("unlocked_buildings"))
+                return json.loads(unlocked_buildings["unlocked_buildings"])
 
             return []
         except json.JSONDecodeError:
@@ -235,7 +236,7 @@ class Players:
             item = self._database.fetchone()
 
             if item is not None:
-                if item.get("quantity") - quantity <= 0:
+                if item["quantity"] - quantity <= 0:
                     try:
                         self._database.execute('''
                             DELETE
@@ -277,7 +278,7 @@ class Players:
         inventory = self._database.fetchall()
 
         if inventory is not None:
-            return {item.get("item_id"): item.get("quantity") for item in inventory}
+            return {item["item_id"]: item["quantity"] for item in inventory}
 
         return {}
 
@@ -313,9 +314,9 @@ class Players:
             player = self._database.fetchone()
 
             if player is not None:
-                is_banned = player.get("is_banned")
+                is_banned = player["is_banned"]
 
-                return is_banned
+                return bool(is_banned)
 
             return False
         except sqlite3.Error:

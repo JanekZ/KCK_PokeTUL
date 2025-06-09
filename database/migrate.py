@@ -1,5 +1,4 @@
-import schemas.game
-import schemas.constants
+from database import schemas
 
 # Define the specified database schema
 def run_migrate(schema) -> None:
