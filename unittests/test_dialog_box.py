@@ -58,3 +58,16 @@ class TestDialogBox(unittest.TestCase):
                          self.dialog_box.pages)
         self.assertFalse(self.dialog_box.has_next_page())
 
+    def test_dialog_box_with_long_word(self):
+        self.dialog_box.set_text("cabalistical")
+        self.assertEqual([["cabalistic", "al"]],self.dialog_box.pages)
+
+    def test_dialog_box_with_very_long_word(self):
+        self.dialog_box.set_text("Lopadotemachoselachogaleokranioleipsanodrimhypotrimmatosilphiokarabomelitokatakechymenokichlepikossyphophattoperisteralektryonoptekephalliokigklopeleiolagoiosiraiobaphetraganopterygon")
+        self.assertEqual(5,len(self.dialog_box.pages))
+        for i in range(4):
+            self.assertTrue(self.dialog_box.has_next_page())
+            self.dialog_box.next_page()
+            self.assertEqual(i+1,self.dialog_box.current_page)
+        self.assertFalse(self.dialog_box.has_next_page())
+        self.assertEqual([['Lopadote', 'machosel', 'achogaleo', 'kranioleip'], ['sanodrimh', 'ypotrimm', 'atosilphio', 'karabomel'], ['itokatakec', 'hymenoki', 'chlepikos', 'syphopha'], ['ttoperister', 'alektryon', 'optekeph', 'alliokigklo'], ['peleiolago', 'iosiraioba', 'phetragan', 'opterygon']],self.dialog_box.pages)

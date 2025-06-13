@@ -33,7 +33,7 @@ class DialogBox:
         self.pages.clear()
         self.current_page = 0
 
-    #Check is page has next page
+    #Check if page has next page
     def has_next_page(self):
         return self.current_page < len(self.pages) - 1
 
@@ -63,7 +63,16 @@ class DialogBox:
         max_width = self.rect.width - 2 * (self.padding + self.stroke_width)
 
         for word in words:
-            test_line = current_line + word + " "
+            if self.font.size(word)[0] > max_width:
+                while self.font.size(word)[0] > max_width:
+                    part_word = self.split_word(word, current_line)
+                    current_line += part_word
+                    word = word[len(part_word):]
+                    lines.append(current_line)
+                    current_line = ""
+                test_line = word
+            else:
+                test_line = current_line + word + " "
             if self.font.size(test_line)[0] <= max_width:
                 current_line = test_line
             else:
@@ -72,6 +81,17 @@ class DialogBox:
         lines.append(current_line.strip())
         return lines
 
+    #Split that word can fill in line with the current line already
+    def split_word(self, word, current_line):
+        max_width = self.rect.width - 2 * (self.padding + self.stroke_width)
+        if self.font.size(word)[0] <= max_width:
+            return word
+        else:
+            for i in range(len(word)):
+                test_line = current_line + word[:i]
+                if self.font.size(test_line)[0] > max_width:
+                    return word[:i-1]
+            return word
 
     # Split to pages depends on the size of box and font
     def split_to_pages(self, lines):
