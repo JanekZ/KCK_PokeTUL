@@ -1,5 +1,5 @@
 import pygame
-from dynamic_entity import DynamicEntity
+from engine.dynamic_entity import DynamicEntity
 
 class CollisionDetection:
     def __init__(self, obj: DynamicEntity, d_xy: tuple[int, int]):
@@ -73,4 +73,3 @@ class CollisionDetection:
             return True
 
         return False
-

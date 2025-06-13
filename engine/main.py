@@ -1,5 +1,5 @@
 import setup
-import constants as c
+import engine.constants as c
 
 def main() -> None:
     """

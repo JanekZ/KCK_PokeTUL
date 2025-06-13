@@ -1,5 +1,5 @@
-import constants as c
-from game_state import GameState
+import engine.constants as c
+from engine.game_state import GameState
 
 class MainState(GameState):
     def __init__(self, layers):
