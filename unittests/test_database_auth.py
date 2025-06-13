@@ -4,12 +4,14 @@ import hashlib
 from database.utils.auth import Auth
 
 class TestAuth(unittest.TestCase):
-    def setUp(self):
-        self.connection = sqlite3.connect(":memory:")
-        self.connection.row_factory = sqlite3.Row
-        self.cursor = self.connection.cursor()
+    ''' Unit test class for Auth authentication handler '''
 
-        self.cursor.execute('''
+    def setUp(self) -> None:
+        self._connection = sqlite3.connect(":memory:")
+        self._connection.row_factory = sqlite3.Row
+        self._database = self._connection.cursor()
+
+        self._database.execute('''
             CREATE TABLE players (
                 id INTEGER PRIMARY KEY NOT NULL UNIQUE,
                 name TEXT NOT NULL,
@@ -18,7 +20,7 @@ class TestAuth(unittest.TestCase):
             )
         ''')
 
-        self.cursor.execute('''
+        self._database.execute('''
             CREATE TABLE sessions (
                 id TEXT PRIMARY KEY UNIQUE,
                 player_id INTEGER NOT NULL,
@@ -26,86 +28,97 @@ class TestAuth(unittest.TestCase):
             )
         ''')
 
-        self.connection.commit()
+        self._connection.commit()
 
-        self.auth = Auth()
-        self.auth._connection = self.connection
-        self.auth._database = self.cursor
+        self._auth = Auth()
+        self._auth._connection = self._connection
+        self._auth._database = self._database
 
-    def test_register_status(self):
-        status, message = self.auth.register(1, "Alice", "password123")
+    def test_register_success(self) -> None:
+        status, message = self._auth.register(1, "Alice", "securepass")
         self.assertTrue(status)
         self.assertEqual(message, "Registration successful")
 
-    def test_register_duplicate(self):
-        self.auth.register(1, "Alice", "password123")
-        status, message = self.auth.register(1, "Alice", "password123")
+    def test_register_duplicate(self) -> None:
+        self._auth.register(1, "Alice", "securepass")
+        status, message = self._auth.register(1, "Alice", "securepass")
         self.assertFalse(status)
         self.assertEqual(message, "Student already exists")
 
-    def test_login_status(self):
-        hashed_pw = hashlib.sha256("password123".encode()).hexdigest()
-        self.cursor.execute('''
-            INSERT INTO players (id, name, password) VALUES (?, ?, ?)
-        ''', (1, "Alice", hashed_pw))
-        self.connection.commit()
+    def test_login_success(self) -> None:
+        hashed = hashlib.sha256("securepass".encode()).hexdigest()
+        self._database.execute('''
+            INSERT INTO players (id, name, password)
+            VALUES (?, ?, ?)
+        ''', (1, "Alice", hashed))
 
-        status, message = self.auth.login(1, "password123")
+        self._connection.commit()
+
+        status, session = self._auth.login(1, "securepass")
         self.assertTrue(status)
-        self.assertIsInstance(message, str)
-        self.assertGreater(len(message), 0)
+        self.assertIsInstance(session, str)
 
-    def test_login_invalid_credentials(self):
-        hashed_pw = hashlib.sha256("password123".encode()).hexdigest()
-        self.cursor.execute('''
-            INSERT INTO players (id, name, password) VALUES (?, ?, ?)
-        ''', (1, "Alice", hashed_pw))
-        self.connection.commit()
+    def test_login_wrong_password(self) -> None:
+        hashed = hashlib.sha256("securepass".encode()).hexdigest()
+        self._database.execute('''
+            INSERT INTO players (id, name, password)
+            VALUES (?, ?, ?)
+        ''', (1, "Alice", hashed))
 
-        status, message = self.auth.login(1, "wrongpass")
+        self._connection.commit()
+
+        status, message = self._auth.login(1, "wrongpass")
         self.assertFalse(status)
         self.assertEqual(message, "Invalid credentials")
 
-    def test_login_banned_user(self):
-        hashed_pw = hashlib.sha256("password123".encode()).hexdigest()
-        self.cursor.execute('''
+    def test_login_banned_account(self) -> None:
+        hashed = hashlib.sha256("securepass".encode()).hexdigest()
+        self._database.execute('''
             INSERT INTO players (id, name, password, is_banned)
             VALUES (?, ?, ?, ?)
-        ''', (1, "Alice", hashed_pw, 1))
-        self.connection.commit()
+        ''', (1, "Alice", hashed, 1))
 
-        status, message = self.auth.login(1, "password123")
+        self._connection.commit()
+
+        status, message = self._auth.login(1, "securepass")
         self.assertFalse(status)
         self.assertEqual(message, "Account suspended")
 
-    def test_validate_session_valid(self):
-        # Setup valid player and session
-        self.cursor.execute('''
-            INSERT INTO players (id, name, password) VALUES (?, ?, ?)
+    def test_validate_session_valid(self) -> None:
+        self._database.execute('''
+            INSERT INTO players (id, name, password)
+            VALUES (?, ?, ?)
         ''', (1, "Alice", "irrelevant"))
-        self.cursor.execute('''
-            INSERT INTO sessions (id, player_id) VALUES (?, ?)
-        ''', ("session-token-xyz", 1))
-        self.connection.commit()
 
-        self.assertTrue(self.auth.validate_session("session-token-xyz"))
+        self._database.execute('''
+            INSERT INTO sessions (id, player_id)
+            VALUES (?, ?)
+        ''', ("abc123", 1))
 
-    def test_validate_session_invalid(self):
-        self.assertFalse(self.auth.validate_session("nonexistent-session"))
+        self._connection.commit()
 
-    def test_validate_session_banned_player(self):
-        self.cursor.execute('''
-            INSERT INTO players (id, name, password, is_banned) VALUES (?, ?, ?, ?)
+        self.assertTrue(self._auth.validate_session("abc123"))
+
+    def test_validate_session_invalid(self) -> None:
+        self.assertFalse(self._auth.validate_session("invalid-token"))
+
+    def test_validate_session_banned_player(self) -> None:
+        self._database.execute('''
+            INSERT INTO players (id, name, password, is_banned)
+            VALUES (?, ?, ?, ?)
         ''', (1, "Alice", "irrelevant", 1))
-        self.cursor.execute('''
-            INSERT INTO sessions (id, player_id) VALUES (?, ?)
-        ''', ("session-token-xyz", 1))
-        self.connection.commit()
 
-        self.assertFalse(self.auth.validate_session("session-token-xyz"))
+        self._database.execute('''
+            INSERT INTO sessions (id, player_id)
+            VALUES (?, ?)
+        ''', ("abc123", 1))
 
-    def tearDown(self):
-        self.connection.close()
+        self._connection.commit()
+
+        self.assertFalse(self._auth.validate_session("abc123"))
+
+    def tearDown(self) -> None:
+        self._connection.close()
 
 if __name__ == "__main__":
     unittest.main()
