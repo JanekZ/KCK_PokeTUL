@@ -1,8 +1,8 @@
 import pygame
-from dynamic_entity import DynamicEntity
+from character import Character
 
 class CollisionDetection:
-    def __init__(self, obj: DynamicEntity, d_xy: tuple[int, int]):
+    def __init__(self, obj: Character, d_xy: tuple[int, int]):
         """
         SETTING UP:
             Creation of class properties using parameters.
@@ -16,7 +16,7 @@ class CollisionDetection:
         self.d_x, self.d_y = d_xy
         self.clone = self.create_clone()
 
-    def create_clone(self) -> DynamicEntity:
+    def create_clone(self) -> Character:
         """
         CREATION:
             New dynamic entity object is created with new x and y values with offset.
@@ -25,7 +25,7 @@ class CollisionDetection:
         """
         new_x = self.obj.rect.x + self.d_x
         new_y = self.obj.rect.y + self.d_y
-        clone = DynamicEntity(new_x, new_y, self.obj.width, self.obj.height, self.obj.color)
+        clone = Character(new_x, new_y)
         return clone
 
     def check_collision(self, layer: pygame.sprite.Group, ) -> tuple[bool, int]:

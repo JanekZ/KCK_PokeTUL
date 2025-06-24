@@ -1,8 +1,8 @@
 import pygame
 import constants as c
-from static_entity import StaticEntity, Portal
-from dynamic_entity import DynamicEntity
 from building import Building
+from character import Character
+from background import Background
 
 def build(build_file: str) -> dict:
     backgrounds = pygame.sprite.Group()
@@ -17,7 +17,33 @@ def build(build_file: str) -> dict:
                         c.CHARACTER: characters}
 
     with open(build_file, "r") as f:
+        for row in f:
+            entity = row.rstrip().split()
+            entity_type = entity[0]
+            entity_x = int(entity[1])
+            entity_y = int(entity[2])
 
+            if entity_type == c.BUILDING:
+                building_type = entity[3]
+                new_building = Building(entity_x, entity_y, c.BUILDING_FILE_DICTIONARY[building_type][0], building_type)
+                portal = new_building.create_portal()
+                building_front = new_building.create_front(c.BUILDING_FILE_DICTIONARY[building_type][1])
+                layers_dict[c.BUILDING_FRONT].add(building_front)
+                layers_dict[c.PORTAL].add(portal)
+                layers_dict[c.BUILDING].add(new_building)
+
+            elif entity_type == c.CHARACTER:
+                new_character = Character()
+                layers_dict[c.CHARACTER].add(new_character)
+
+            else: 
+                new_entity = Background(entity_x, entity_y, "engine/images/outside.png")
+                layers_dict[c.BACKGROUND].add(new_entity)
+
+
+
+
+        """
         new_element = Building(-50, -50, "images/DMCS_znacznik.png", c.DMCS)
         portal = new_element.create_portal()
         building_front = new_element.create_front("images/DMCS_budynek.png")
@@ -40,5 +66,5 @@ def build(build_file: str) -> dict:
                 new_element = DynamicEntity(c.CHARACTER_SCREEN_CENTER_WIDTH, c.CHARACTER_SCREEN_CENTER_HEIGHT, width, height, (r,g,b))
 
             layers_dict[box_type].add(new_element)
-
+        """
     return list(layers_dict.values())

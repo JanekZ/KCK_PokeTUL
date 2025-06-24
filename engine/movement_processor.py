@@ -47,6 +47,7 @@ class MovementProcessor:
 
         characters = [character for character in layers[c.CHARACTERS_LAYER]]
         character = characters[0]
+        character.set_direction(direction)
 
         collision_detector = CollisionDetection(character, d_xy)
 

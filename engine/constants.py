@@ -1,5 +1,5 @@
 #MAIN VALUES
-SCALE = 6
+SCALE = 5
 FPS = 60
 SPEED = 1
 
@@ -18,7 +18,7 @@ TOP_LEFT = (0, 0)
 
 # CHARACTER DIMENSIONS
 CHARACTER_WIDTH = 14
-CHARACTER_HEIGHT = 20
+CHARACTER_HEIGHT = 19
 CHARACTER_SIZE = (CHARACTER_WIDTH, CHARACTER_HEIGHT)
 CHARACTER_SCREEN_CENTER_WIDTH = NATIVE_WIDTH/2 - CHARACTER_WIDTH/2
 CHARACTER_SCREEN_CENTER_HEIGHT = NATIVE_HEIGHT/2 - CHARACTER_HEIGHT/2
@@ -34,9 +34,9 @@ INSIDE_SCREEN = "INSIDE_SCREEN"
 SECOND_INSIDE_SCREEN = "SECOND_INSIDE_SCREEN"
 
 # GAME STATE TERRAIN LOAD DICTIONARY
-STATE_DICT = {MAIN_SCREEN: "terrains/main_terrain.txt",
-              INSIDE_SCREEN: "terrains/inside_terrain.txt",
-              SECOND_INSIDE_SCREEN: "terrains/second_inside_terrain.txt"}
+STATE_DICT = {MAIN_SCREEN: "engine/terrains/main_terrain.txt",
+              INSIDE_SCREEN: "engine/terrains/inside_terrain.txt",
+              SECOND_INSIDE_SCREEN: "engine/terrains/second_inside_terrain.txt"}
 
 # MOVEMENT DIRECTIONS
 UP = "UP"
@@ -79,8 +79,15 @@ JUMP_MODE = "JUMP_MODE"
 BACK_MODE = "BACK_MODE"
 
 # BUILDING NAMES
-DMCS = ("DMCS")
+DMCS = "DMCS"
+BIBLIOTEKA = "BIBLIOTEKA"
 
-#PORTAL OFFET
+# BUILDING FILE NAMES DICTIONARY
+BUILDING_FILE_DICTIONARY = {
+    DMCS: ["engine/images/DMCS_znacznik.png", "engine/images/DMCS_budynek.png"],
+    BIBLIOTEKA: ["engine/images/BIBLIOTEKA_znacznik.png", "engine/images/BIBLIOTEKA_budynek.png"]
+}
 
-PORTAL_OFFSET = {DMCS: (5,4)}
+#PORTAL OFFSET
+PORTAL_OFFSET = {DMCS: (5,4),
+                 BIBLIOTEKA: (27, 2)}
