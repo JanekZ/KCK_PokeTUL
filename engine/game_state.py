@@ -1,8 +1,8 @@
-import constants as c
+import engine.constants as c
 
-from graphics import Graphics
-from algorithms.dll_stack import DLLStack
-from movement_processor import MovementProcessor
+from engine.graphics import Graphics
+from engine.algorithms.dll_stack import DLLStack
+from engine.movement_processor import MovementProcessor
 
 
 class GameState:

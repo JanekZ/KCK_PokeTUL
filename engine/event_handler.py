@@ -1,5 +1,5 @@
 import pygame
-from commands import *
+from engine.commands import *
 
 class EventHandler:
     def __init__(self):

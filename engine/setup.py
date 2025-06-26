@@ -1,11 +1,11 @@
 import pygame
-import constants as c
+import engine.constants as c
 
-from controller import Controller
+from engine.controller import Controller
 # List of all the states
-from game_states.main_state import MainState
-from game_states.inside_state import InsideState
-from game_states.second_inside_state import SecondInsideState
+from engine.game_states.main_state import MainState
+from engine.game_states.inside_state import InsideState
+from engine.game_states.second_inside_state import SecondInsideState
 
 
 def init() -> None:

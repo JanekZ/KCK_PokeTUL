@@ -1,4 +1,4 @@
-from game_state import GameState
+from engine.game_state import GameState
 
 class SecondInsideState(GameState):
     def __init__(self, layers):

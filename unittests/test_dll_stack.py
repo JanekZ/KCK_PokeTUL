@@ -1,6 +1,6 @@
 import unittest
-from algorithms.dll_stack import DLLStack
-from algorithms.dll_stack import Node
+from engine.algorithms.dll_stack import DLLStack
+from engine.algorithms.dll_stack import Node
 
 class TestDLLStack(unittest.TestCase):
     def setUp(self):

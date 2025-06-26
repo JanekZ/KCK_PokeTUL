@@ -1,9 +1,9 @@
-import constants as c
+import engine.constants as c
 
-from event_handler import EventHandler
-from algorithms.dll_stack import DLLStack
+from engine.event_handler import EventHandler
+from engine.algorithms.dll_stack import DLLStack
 
-from builder import build
+from engine.builder import build
 
 class Controller:
     def __init__(self, display, clock, game_states, starting_state):
@@ -35,7 +35,7 @@ class Controller:
         NEW STATE START:
             Initializes a new Game State object with dictionary of Entity objects as a parameter.
             Makes a push to the stack.
-        
+
         :param state_name: Name of the new state.
         """
         self.game_state_stack.push(self.game_states[state_name](build(c.STATE_DICT[state_name])))
@@ -86,10 +86,10 @@ class Controller:
                 self.start_state(self.state.next_state_name)
 
         self.state = self.game_state_stack.top().value
-    
+
     def render_state(self) -> None:
         """
         RENDER THE STATE:
             Prompts the state to render itself.
         """
-        self.state.render(self.display) 
+        self.state.render(self.display)

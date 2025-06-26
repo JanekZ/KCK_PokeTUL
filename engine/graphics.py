@@ -1,5 +1,5 @@
 import pygame
-import constants as c
+import engine.constants as c
 
 class Graphics:
     def __init__(self, layers: list):
