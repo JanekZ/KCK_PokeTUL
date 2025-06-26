@@ -45,34 +45,6 @@ def build(build_file: str) -> dict:
                 layers_dict[c.CHARACTER].add(new_character)
 
             else: 
-                new_entity = Background(entity_x, entity_y, "engine/images/outside_dupe.png")
+                new_entity = Background(entity_x, entity_y, "images/outside_dupe.png")
                 layers_dict[c.BACKGROUND].add(new_entity)
-
-
-
-
-        """
-        new_element = Building(-50, -50, "images/DMCS_znacznik.png", c.DMCS)
-        portal = new_element.create_portal()
-        building_front = new_element.create_front("images/DMCS_budynek.png")
-
-        layers_dict[c.BUILDING_FRONT].add(building_front)
-        layers_dict[c.PORTAL].add(portal)
-        layers_dict[c.BUILDING].add(new_element)
-
-        for row in f:
-            line = row.rstrip().split(" ")
-            line = [int(value) if  8 > idx >= 1 else value for idx, value in enumerate(line)]
-            box_type, x, y, width, height, r, g, b = line[:8]
-
-            if box_type in [c.BUILDING, c.BACKGROUND]:
-                new_element = StaticEntity(x, y, width, height, (r,g,b))
-            elif box_type == c.PORTAL:
-                portal_destination = line[8]
-                new_element = Portal(x, y, width, height, (r,g,b), portal_destination)
-            else:
-                new_element = DynamicEntity(c.CHARACTER_SCREEN_CENTER_WIDTH, c.CHARACTER_SCREEN_CENTER_HEIGHT, width, height, (r,g,b))
-
-            layers_dict[box_type].add(new_element)
-        """
     return list(layers_dict.values())

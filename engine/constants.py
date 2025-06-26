@@ -34,9 +34,9 @@ INSIDE_SCREEN = "INSIDE_SCREEN"
 SECOND_INSIDE_SCREEN = "SECOND_INSIDE_SCREEN"
 
 # GAME STATE TERRAIN LOAD DICTIONARY
-STATE_DICT = {MAIN_SCREEN: "engine/terrains/terrain.txt",
-              INSIDE_SCREEN: "engine/terrains/inside_terrain.txt",
-              SECOND_INSIDE_SCREEN: "engine/terrains/second_inside_terrain.txt"}
+STATE_DICT = {MAIN_SCREEN: "terrains/terrain.txt",
+              INSIDE_SCREEN: "terrains/inside_terrain.txt",
+              SECOND_INSIDE_SCREEN: "terrains/second_inside_terrain.txt"}
 
 # MOVEMENT DIRECTIONS
 UP = "UP"
@@ -92,13 +92,13 @@ BLOCKADE = "BLOCKADE"
 
 # BUILDING FILE NAMES DICTIONARY
 BUILDING_FILE_DICTIONARY = {
-    DMCS: ["engine/images/DMCS/DMCS_znacznik.png", "engine/images/DMCS/DMCS_budynek.png"],
-    BIBLIOTEKA: ["engine/images/BIBLIOTEKA/BIBLIOTEKA_znacznik.png", "engine/images/BIBLIOTEKA/BIBLIOTEKA_budynek.png"],
-    CJ: ["engine/images/CJ/CJ_znacznik.png", "engine/images/CJ/CJ_budynek.png"],
-    ZATOKASPORTU: ["engine/images/ZATOKASPORTU/ZATOKASPORTU_znacznik.png", "engine/images/ZATOKASPORTU/ZATOKASPORTU_budynek.png"],
-    WOIZ: ["engine/images/WOIZ/WOIZ_znacznik.png", "engine/images/WOIZ/WOIZ_budynek.png"],
-    ARCH: ["engine/images/ARCH/ARCH_znacznik.png", "engine/images/ARCH/ARCH_budynek.png"],
-    WFTIMS: ["engine/images/WFTIMS/WFTIMS_znacznik.png", "engine/images/WFTIMS/WFTIMS_budynek.png"]
+    DMCS: ["images/DMCS/DMCS_znacznik.png", "images/DMCS/DMCS_budynek.png"],
+    BIBLIOTEKA: ["images/BIBLIOTEKA/BIBLIOTEKA_znacznik.png", "images/BIBLIOTEKA/BIBLIOTEKA_budynek.png"],
+    CJ: ["images/CJ/CJ_znacznik.png", "images/CJ/CJ_budynek.png"],
+    ZATOKASPORTU: ["images/ZATOKASPORTU/ZATOKASPORTU_znacznik.png", "images/ZATOKASPORTU/ZATOKASPORTU_budynek.png"],
+    WOIZ: ["images/WOIZ/WOIZ_znacznik.png", "images/WOIZ/WOIZ_budynek.png"],
+    ARCH: ["images/ARCH/ARCH_znacznik.png", "images/ARCH/ARCH_budynek.png"],
+    WFTIMS: ["images/WFTIMS/WFTIMS_znacznik.png", "images/WFTIMS/WFTIMS_budynek.png"]
 }
 
 #PORTAL OFFSET
