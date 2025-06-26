@@ -1,6 +1,6 @@
-import constants as c
 import pygame
 
+import engine.constants as c
 
 class Building(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int, image_path: str, building_name: str | None):

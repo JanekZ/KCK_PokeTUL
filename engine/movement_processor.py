@@ -1,6 +1,6 @@
-import constants as c
-from algorithms.collision_detection import CollisionDetection
-from entities.character import Character
+import engine.constants as c
+from engine.algorithms.collision_detection import CollisionDetection
+from engine.entities.character import Character
 
 class MovementProcessor:
     def __init__(self, camera_mode: str) -> None:

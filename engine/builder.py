@@ -1,8 +1,12 @@
 import pygame
-import constants as c
-from entities.building import Building, Blockade
-from entities.character import Character
-from entities.background import Background
+
+import engine.constants as c
+
+from engine.entities.building import Building, Blockade
+from engine.entities.character import Character
+from engine.entities.background import Background
+
+from engine.utils.fix_path import fix_path
 
 def build(build_file: str) -> dict:
     backgrounds = pygame.sprite.Group()
@@ -44,7 +48,7 @@ def build(build_file: str) -> dict:
                 new_character = Character()
                 layers_dict[c.CHARACTER].add(new_character)
 
-            else: 
-                new_entity = Background(entity_x, entity_y, "images/outside_dupe.png")
+            else:
+                new_entity = Background(entity_x, entity_y, fix_path("images/outside_dupe.png"))
                 layers_dict[c.BACKGROUND].add(new_entity)
     return list(layers_dict.values())

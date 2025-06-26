@@ -1,6 +1,9 @@
-import constants as c
 import pygame
+import os
 
+import engine.constants as c
+
+from engine.utils.fix_path import fix_path
 
 class Character(pygame.sprite.Sprite):
     def __init__(self, x = None, y= None, seen: bool = True):
@@ -20,26 +23,26 @@ class Character(pygame.sprite.Sprite):
         super(Character, self).__init__()
 
         self.spriteFront = [
-            pygame.image.load("images/character/character_front/front_single1.png"),
-            pygame.image.load("images/character/character_front/front_single2.png"),
-            pygame.image.load("images/character/character_front/front_single3.png"),
-            pygame.image.load("images/character/character_front/front_single4.png")
+            pygame.image.load(fix_path("images/character/character_front/front_single1.png")),
+            pygame.image.load(fix_path("images/character/character_front/front_single2.png")),
+            pygame.image.load(fix_path("images/character/character_front/front_single3.png")),
+            pygame.image.load(fix_path("images/character/character_front/front_single4.png"))
         ]
         self.spriteBack = [
-            pygame.image.load("images/character/character_back/back_single1.png"),
-            pygame.image.load("images/character/character_back/back_single2.png"),
-            pygame.image.load("images/character/character_back/back_single3.png"),
-            pygame.image.load("images/character/character_back/back_single4.png")
+            pygame.image.load(fix_path("images/character/character_back/back_single1.png")),
+            pygame.image.load(fix_path("images/character/character_back/back_single2.png")),
+            pygame.image.load(fix_path("images/character/character_back/back_single3.png")),
+            pygame.image.load(fix_path("images/character/character_back/back_single4.png"))
         ]
         self.spriteLeft = [
-            pygame.image.load("images/character/character_side/side_single1.png"),
-            pygame.image.load("images/character/character_side/side_single2.png"),
-            pygame.image.load("images/character/character_side/side_single3.png"),
-            pygame.image.load("images/character/character_side/side_single4.png")
+            pygame.image.load(fix_path("images/character/character_side/side_single1.png")),
+            pygame.image.load(fix_path("images/character/character_side/side_single2.png")),
+            pygame.image.load(fix_path("images/character/character_side/side_single3.png")),
+            pygame.image.load(fix_path("images/character/character_side/side_single4.png"))
         ]
         self.spriteRight = [ pygame.transform.flip(sprite, True, False) for sprite in self.spriteLeft ]
 
-        self.spriteHidden = pygame.image.load("images/character/character_sign.png")
+        self.spriteHidden = pygame.image.load(fix_path("images/character/character_sign.png"))
         self.seen = seen
 
 
