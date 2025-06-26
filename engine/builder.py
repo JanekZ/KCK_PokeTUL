@@ -1,8 +1,8 @@
 import pygame
 import constants as c
-from building import Building
-from character import Character
-from background import Background
+from entities.building import Building, Blockade
+from entities.character import Character
+from entities.background import Background
 
 def build(build_file: str) -> dict:
     backgrounds = pygame.sprite.Group()
@@ -10,11 +10,13 @@ def build(build_file: str) -> dict:
     fronts = pygame.sprite.Group()
     portals = pygame.sprite.Group()
     characters = pygame.sprite.Group()
+    fx = pygame.sprite.Group()
     layers_dict = {c.BACKGROUND: backgrounds,
-                        c.BUILDING: buildings,
-                        c.BUILDING_FRONT: fronts,
-                        c.PORTAL: portals,
-                        c.CHARACTER: characters}
+                   c.CHARACTER: characters,
+                   c.BUILDING: buildings,
+                   c.PORTAL: portals,
+                   c.BUILDING_FRONT: fronts,
+                   c.FX: fx}
 
     with open(build_file, "r") as f:
         for row in f:
@@ -26,18 +28,24 @@ def build(build_file: str) -> dict:
             if entity_type == c.BUILDING:
                 building_type = entity[3]
                 new_building = Building(entity_x, entity_y, c.BUILDING_FILE_DICTIONARY[building_type][0], building_type)
-                portal = new_building.create_portal()
                 building_front = new_building.create_front(c.BUILDING_FILE_DICTIONARY[building_type][1])
                 layers_dict[c.BUILDING_FRONT].add(building_front)
-                layers_dict[c.PORTAL].add(portal)
+                portal = new_building.create_portal()
+                if portal is not None:
+                    layers_dict[c.PORTAL].add(portal)
                 layers_dict[c.BUILDING].add(new_building)
+            elif entity_type == c.BLOCKADE:
+                width = int(entity[3])
+                height = int(entity[4])
+                new_blockade = Blockade(entity_x, entity_y, width, height)
+                layers_dict[c.BUILDING].add(new_blockade)
 
             elif entity_type == c.CHARACTER:
                 new_character = Character()
                 layers_dict[c.CHARACTER].add(new_character)
 
             else: 
-                new_entity = Background(entity_x, entity_y, "engine/images/outside.png")
+                new_entity = Background(entity_x, entity_y, "engine/images/outside_dupe.png")
                 layers_dict[c.BACKGROUND].add(new_entity)
 
 

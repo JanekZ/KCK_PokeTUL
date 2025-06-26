@@ -24,7 +24,7 @@ class Graphics:
 
         :param display: Pygame Surface object that all the elements get rendered on.
         """
-        self.canvas.fill((0,0,0))
+        self.canvas.fill((52,75,35))
 
         for layer in self.layers:
             layer.draw(self.canvas)

@@ -1,7 +1,7 @@
 #MAIN VALUES
 SCALE = 5
 FPS = 60
-SPEED = 1
+SPEED = 5
 
 # NATIVE SCREEN DIMENSIONS
 NATIVE_WIDTH = 240
@@ -34,7 +34,7 @@ INSIDE_SCREEN = "INSIDE_SCREEN"
 SECOND_INSIDE_SCREEN = "SECOND_INSIDE_SCREEN"
 
 # GAME STATE TERRAIN LOAD DICTIONARY
-STATE_DICT = {MAIN_SCREEN: "engine/terrains/main_terrain.txt",
+STATE_DICT = {MAIN_SCREEN: "engine/terrains/terrain.txt",
               INSIDE_SCREEN: "engine/terrains/inside_terrain.txt",
               SECOND_INSIDE_SCREEN: "engine/terrains/second_inside_terrain.txt"}
 
@@ -60,10 +60,11 @@ MOVING_CAMERA = "MOVING_CAMERA"
 
 # LAYER INDEXES
 BACKGROUND_LAYER = 0
-BUILDINGS_LAYER = 1
-BUILDING_FRONT_LAYER = 2
+CHARACTERS_LAYER = 1
+BUILDINGS_LAYER = 2
 PORTAL_LAYER = 3
-CHARACTERS_LAYER = 4
+BUILDING_FRONT_LAYER = 4
+FX_LAYER = 5
 
 # ENTITIES NAMES
 BACKGROUND = "BACKGROUND"
@@ -71,6 +72,7 @@ BUILDING = "BUILDING"
 BUILDING_FRONT = "BUILDING_FRONT"
 PORTAL = "PORTAL"
 CHARACTER = "CHARACTER"
+FX = "FX"
 
 # GAME STATE CHANGE
 NO_JUMP = "NO_JUMP"
@@ -81,13 +83,29 @@ BACK_MODE = "BACK_MODE"
 # BUILDING NAMES
 DMCS = "DMCS"
 BIBLIOTEKA = "BIBLIOTEKA"
+CJ = "CJ"
+ZATOKASPORTU = "ZATOKASPORTU"
+WOIZ = "WOIZ"
+ARCH = "ARCH"
+WFTIMS = "WFTIMS"
+BLOCKADE = "BLOCKADE"
 
 # BUILDING FILE NAMES DICTIONARY
 BUILDING_FILE_DICTIONARY = {
-    DMCS: ["engine/images/DMCS_znacznik.png", "engine/images/DMCS_budynek.png"],
-    BIBLIOTEKA: ["engine/images/BIBLIOTEKA_znacznik.png", "engine/images/BIBLIOTEKA_budynek.png"]
+    DMCS: ["engine/images/DMCS/DMCS_znacznik.png", "engine/images/DMCS/DMCS_budynek.png"],
+    BIBLIOTEKA: ["engine/images/BIBLIOTEKA/BIBLIOTEKA_znacznik.png", "engine/images/BIBLIOTEKA/BIBLIOTEKA_budynek.png"],
+    CJ: ["engine/images/CJ/CJ_znacznik.png", "engine/images/CJ/CJ_budynek.png"],
+    ZATOKASPORTU: ["engine/images/ZATOKASPORTU/ZATOKASPORTU_znacznik.png", "engine/images/ZATOKASPORTU/ZATOKASPORTU_budynek.png"],
+    WOIZ: ["engine/images/WOIZ/WOIZ_znacznik.png", "engine/images/WOIZ/WOIZ_budynek.png"],
+    ARCH: ["engine/images/ARCH/ARCH_znacznik.png", "engine/images/ARCH/ARCH_budynek.png"],
+    WFTIMS: ["engine/images/WFTIMS/WFTIMS_znacznik.png", "engine/images/WFTIMS/WFTIMS_budynek.png"]
 }
 
 #PORTAL OFFSET
-PORTAL_OFFSET = {DMCS: (5,4),
-                 BIBLIOTEKA: (27, 2)}
+PORTAL_OFFSET = {DMCS: (5,4, 2*TILE_WIDTH, 1*TILE_HEIGHT),
+                 BIBLIOTEKA: (28, 2, 1*TILE_WIDTH, 2*TILE_HEIGHT),
+                 CJ: (20, 3, 1*TILE_WIDTH, 2*TILE_HEIGHT),
+                 ZATOKASPORTU: (None, None, None, None),
+                 WOIZ: (0, 6, 1*TILE_WIDTH, 2*TILE_HEIGHT),
+                 ARCH: (0, 1, 1*TILE_WIDTH, 2*TILE_HEIGHT),
+                 WFTIMS: (10, 4, 2*TILE_WIDTH, 1*TILE_HEIGHT)}

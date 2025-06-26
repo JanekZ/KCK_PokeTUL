@@ -38,12 +38,14 @@ class Building(pygame.sprite.Sprite):
         self.building_name = building_name
 
     def create_portal(self):
-        off_x, off_y = c.PORTAL_OFFSET[self.building_name]
+        off_x, off_y, width, height = c.PORTAL_OFFSET[self.building_name]
+        if off_x is None or off_y is None:
+            return None
 
         portal_x = self.x + off_x*c.TILE_WIDTH
         portal_y = self.y + off_y*c.TILE_HEIGHT
 
-        portal = Portal(portal_x, portal_y, "engine/images/portal.png", c.SECOND_INSIDE_SCREEN)
+        portal = Portal(portal_x, portal_y, width, height, c.SECOND_INSIDE_SCREEN)
 
         return portal
 
@@ -66,8 +68,51 @@ class Building(pygame.sprite.Sprite):
         self.rect.x += self.d_x
         self.rect.y += self.d_y
 
-class Portal(Building):
-    def __init__(self, x: int, y: int, image_path: str, destination: str):
-        super(Portal, self).__init__(x, y, image_path, None)
+class Portal(pygame.sprite.Sprite):
+    def __init__(self, x: int, y: int, width: int, height: int, destination: str):
+        super(Portal, self).__init__()
 
         self.destination = destination
+
+        self.image = pygame.Surface((width, height))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+        self.x = x
+        self.y = y
+
+        self.d_x = 0
+        self.d_y = 0
+
+    def update(self) -> None:
+        """
+        RECTANGLE X AND Y CHANGE:
+            Changing the rectangle x and y, by incrementing it with correct axis speed/change.
+        """
+        self.rect.x += self.d_x
+        self.rect.y += self.d_y
+
+class Blockade(pygame.sprite.Sprite):
+    def __init__(self, x: int, y: int, width: int, height: int):
+        super(Blockade, self).__init__()
+
+        self.image = pygame.Surface((width, height))
+        self.image.fill((52,75,35))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+        self.x = x
+        self.y = y
+
+        self.d_x = 0
+        self.d_y = 0
+
+    def update(self) -> None:
+        """
+        RECTANGLE X AND Y CHANGE:
+            Changing the rectangle x and y, by incrementing it with correct axis speed/change.
+        """
+        self.rect.x += self.d_x
+        self.rect.y += self.d_y

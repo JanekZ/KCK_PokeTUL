@@ -1,5 +1,5 @@
 import pygame
-from character import Character
+from entities.character import Character
 
 class CollisionDetection:
     def __init__(self, obj: Character, d_xy: tuple[int, int]):

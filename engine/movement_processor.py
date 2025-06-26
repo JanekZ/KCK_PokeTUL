@@ -1,5 +1,6 @@
 import constants as c
 from algorithms.collision_detection import CollisionDetection
+from entities.character import Character
 
 class MovementProcessor:
     def __init__(self, camera_mode: str) -> None:
@@ -59,13 +60,25 @@ class MovementProcessor:
         is_collision_with_building, num_of_collisions = collision_detector.check_collision(layers[c.BUILDINGS_LAYER])
         is_out_of_bounds = collision_detector.check_out_of_bounds(layers[c.BACKGROUND_LAYER])
 
+        count = 0
+        for obj in layers[c.BUILDING_FRONT_LAYER]:
+            obj_seen = collision_detector.check_out_of_bounds([obj])
+            if not obj_seen:
+                count += 1
+
+        is_seen = count == 0
+        if not is_seen:
+            layers[c.FX_LAYER].empty()
+            layers[c.FX_LAYER].add(Character(seen = False))
+        else:
+            layers[c.FX_LAYER].empty()
         if is_collision_with_building or is_out_of_bounds or is_collision_with_portal:
             if self.camera_mode == c.STATIC_CAMERA:
                 for obj in layers[c.CHARACTERS_LAYER]:
                     obj.d_x, obj.d_y = c.MOVE_TRANSLATE[c.STOP]
 
             if self.camera_mode == c.MOVING_CAMERA:
-                for layer in layers[:c.CHARACTERS_LAYER]:
+                for layer in layers[:c.CHARACTERS_LAYER] + layers[c.CHARACTERS_LAYER+1:]:
                     for obj in layer:
                         obj.d_x, obj.d_y = c.MOVE_TRANSLATE[c.STOP]
         else:
@@ -73,7 +86,7 @@ class MovementProcessor:
                 for obj in layers[c.CHARACTERS_LAYER]:
                     obj.d_x, obj.d_y = d_xy
             if self.camera_mode == c.MOVING_CAMERA:
-                for layer in layers[:c.CHARACTERS_LAYER]:
+                for layer in layers[:c.CHARACTERS_LAYER] + layers[c.CHARACTERS_LAYER+1:]:
                     for obj in layer:
                         obj.d_x, obj.d_y = -d_xy[0], -d_xy[1]
 

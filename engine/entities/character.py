@@ -3,7 +3,7 @@ import pygame
 
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, x = None, y= None):
+    def __init__(self, x = None, y= None, seen: bool = True):
         """
         CALLING SUPER INIT:
             Calling pygame.sprite.Sprite initializer for all the functionality of parent class.
@@ -20,25 +20,28 @@ class Character(pygame.sprite.Sprite):
         super(Character, self).__init__()
 
         self.spriteFront = [
-            pygame.image.load("engine/images/character_front/front_single1.png"),
-            pygame.image.load("engine/images/character_front/front_single2.png"),
-            pygame.image.load("engine/images/character_front/front_single3.png"),
-            pygame.image.load("engine/images/character_front/front_single4.png")
+            pygame.image.load("engine/images/character/character_front/front_single1.png"),
+            pygame.image.load("engine/images/character/character_front/front_single2.png"),
+            pygame.image.load("engine/images/character/character_front/front_single3.png"),
+            pygame.image.load("engine/images/character/character_front/front_single4.png")
         ]
         self.spriteBack = [
-            pygame.image.load("engine/images/character_back/back_single1.png"),
-            pygame.image.load("engine/images/character_back/back_single2.png"),
-            pygame.image.load("engine/images/character_back/back_single3.png"),
-            pygame.image.load("engine/images/character_back/back_single4.png")
+            pygame.image.load("engine/images/character/character_back/back_single1.png"),
+            pygame.image.load("engine/images/character/character_back/back_single2.png"),
+            pygame.image.load("engine/images/character/character_back/back_single3.png"),
+            pygame.image.load("engine/images/character/character_back/back_single4.png")
         ]
         self.spriteLeft = [
-            pygame.image.load("engine/images/character_side/side_single1.png"),
-            pygame.image.load("engine/images/character_side/side_single2.png"),
-            pygame.image.load("engine/images/character_side/side_single3.png"),
-            pygame.image.load("engine/images/character_side/side_single4.png")
+            pygame.image.load("engine/images/character/character_side/side_single1.png"),
+            pygame.image.load("engine/images/character/character_side/side_single2.png"),
+            pygame.image.load("engine/images/character/character_side/side_single3.png"),
+            pygame.image.load("engine/images/character/character_side/side_single4.png")
         ]
-
         self.spriteRight = [ pygame.transform.flip(sprite, True, False) for sprite in self.spriteLeft ]
+
+        self.spriteHidden = pygame.image.load("engine/images/character/character_sign.png")
+        self.seen = seen
+
 
         self.spriteDirections = {
             c.DOWN: self.spriteFront,
@@ -48,7 +51,12 @@ class Character(pygame.sprite.Sprite):
         }
 
         self.currentDirection = c.DOWN
-        self.currentSprites = self.spriteDirections[c.DOWN]
+
+        if self.seen:
+            self.currentSprites = self.spriteDirections[c.DOWN]
+        else:
+            self.currentSprites = [self.spriteHidden]
+
         self.currentFrame = 0
         self.gameFramesCounter = 0
         self.frameCount = len(self.spriteBack)
@@ -81,7 +89,8 @@ class Character(pygame.sprite.Sprite):
         self.rect.x += self.d_x
         self.rect.y += self.d_y
         self.update_position()
-        self.update_sprite()
+        if self.seen:
+            self.update_sprite()
 
     def update_position(self) -> None:
         """
@@ -121,4 +130,3 @@ class Character(pygame.sprite.Sprite):
             self.image = self.currentSprites[0]
         else:
             self.isStopped = False
-
