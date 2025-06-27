@@ -1,7 +1,10 @@
 import sqlite3
 import hashlib
 import secrets
-import time
+import uuid
+from datetime import datetime, timedelta
+
+import engine.constants as c
 
 class Auth:
     ''' A High Abstraction Layer class for handling players authentication '''
@@ -31,15 +34,9 @@ class Auth:
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
                 if secrets.compare_digest(hashed_password, player["password"]):
-                    session_id = secrets.token_urlsafe(32)
+                    session_id = str(uuid.uuid4())
 
-                    self._database.execute('''
-                        INSERT
-                        INTO sessions (id, player_id)
-                        VALUES (?, ?)
-                    ''', (session_id, player_id))
-
-                    self._connection.commit()
+                    self.store_session(player_id, session_id)
 
                     return True, session_id
 
@@ -66,25 +63,70 @@ class Auth:
         except sqlite3.Error:
             return False, "Database error"
 
+    ''' A method to store current user's login session '''
+    def store_session(self, player_id: int, session_id: str) -> bool:
+        try:
+            date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            self._database.execute('''
+                INSERT
+                INTO sessions (id, player_id, created)
+                VALUES (?, ?, ?)
+            ''', (session_id, player_id, date))
+
+            self._connection.commit()
+
+            return True
+        except sqlite3.Error as e:
+            return False
+
     ''' A method to validate login session '''
     def validate_session(self, session_id: str) -> bool:
         try:
             self._database.execute('''
-                SELECT 1
+                SELECT id, player_id, created
                 FROM sessions
-                WHERE id = ? AND player_id IN (
-                    SELECT id
-                    FROM players
-                    WHERE is_banned = 0
-                )
+                WHERE id = ?
             ''', (session_id,))
 
             session = self._database.fetchone()
 
-            if session is not None:
+            if session is None:
+                return False
+
+            created_time = datetime.strptime(session["created"], "%Y-%m-%d %H:%M:%S")
+
+            if datetime.now() - created_time > timedelta(seconds=c.SESSION_DURATION_SECONDS):
+                    self.invalidate_session(session_id)
+
+                    return False
+
+            self._database.execute('''
+                SELECT is_banned
+                FROM players
+                WHERE id = ?
+            ''', (session["player_id"],))
+
+            player = self._database.fetchone()
+
+            if player is not None and player["is_banned"] == 0:
                 return True
 
             return False
+        except sqlite3.Error:
+            return False
+
+    def invalidate_session(self, session_id: str) -> bool:
+        try:
+            self._database.execute('''
+                DELETE
+                FROM sessions
+                WHERE id = ?
+            ''', (session_id,))
+
+            self._connection.commit()
+
+            return True
         except sqlite3.Error:
             return False
 

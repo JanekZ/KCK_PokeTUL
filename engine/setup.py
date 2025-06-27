@@ -14,6 +14,7 @@ def init() -> None:
         Function call initializes all import pygame modules that will be needed for proper functionality of the code.
     """
     pygame.init()
+    pygame.display.set_caption("PokeTUL")
 
 def get_clock() -> pygame.time.Clock:
     """
