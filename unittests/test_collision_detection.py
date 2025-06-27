@@ -2,8 +2,8 @@ import unittest
 
 import pygame.sprite
 
-from engine.dynamic_entity import DynamicEntity
-from engine.static_entity import StaticEntity
+from engine.entities.dynamic_entity import DynamicEntity
+from engine.entities.static_entity import StaticEntity
 
 from engine.algorithms.collision_detection import CollisionDetection
 

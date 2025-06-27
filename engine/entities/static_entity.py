@@ -1,5 +1,6 @@
-import engine.constants as c
 import pygame
+
+import engine.constants as c
 
 class StaticEntity(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int,int,int]):

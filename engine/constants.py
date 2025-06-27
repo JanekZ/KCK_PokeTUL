@@ -1,3 +1,5 @@
+from engine.utils.fix_path import fix_path
+
 #MAIN VALUES
 SCALE = 5
 FPS = 60
@@ -34,9 +36,11 @@ INSIDE_SCREEN = "INSIDE_SCREEN"
 SECOND_INSIDE_SCREEN = "SECOND_INSIDE_SCREEN"
 
 # GAME STATE TERRAIN LOAD DICTIONARY
-STATE_DICT = {MAIN_SCREEN: "terrains/terrain.txt",
-              INSIDE_SCREEN: "terrains/inside_terrain.txt",
-              SECOND_INSIDE_SCREEN: "terrains/second_inside_terrain.txt"}
+STATE_DICT = {
+    MAIN_SCREEN: fix_path("terrains/terrain.txt"),
+    INSIDE_SCREEN: fix_path("terrains/inside_terrain.txt"),
+    SECOND_INSIDE_SCREEN: fix_path("terrains/second_inside_terrain.txt")
+}
 
 # MOVEMENT DIRECTIONS
 UP = "UP"
@@ -92,13 +96,13 @@ BLOCKADE = "BLOCKADE"
 
 # BUILDING FILE NAMES DICTIONARY
 BUILDING_FILE_DICTIONARY = {
-    DMCS: ["images/DMCS/DMCS_znacznik.png", "images/DMCS/DMCS_budynek.png"],
-    BIBLIOTEKA: ["images/BIBLIOTEKA/BIBLIOTEKA_znacznik.png", "images/BIBLIOTEKA/BIBLIOTEKA_budynek.png"],
-    CJ: ["images/CJ/CJ_znacznik.png", "images/CJ/CJ_budynek.png"],
-    ZATOKASPORTU: ["images/ZATOKASPORTU/ZATOKASPORTU_znacznik.png", "images/ZATOKASPORTU/ZATOKASPORTU_budynek.png"],
-    WOIZ: ["images/WOIZ/WOIZ_znacznik.png", "images/WOIZ/WOIZ_budynek.png"],
-    ARCH: ["images/ARCH/ARCH_znacznik.png", "images/ARCH/ARCH_budynek.png"],
-    WFTIMS: ["images/WFTIMS/WFTIMS_znacznik.png", "images/WFTIMS/WFTIMS_budynek.png"]
+    DMCS: [fix_path("images/DMCS/DMCS_znacznik.png"), fix_path("images/DMCS/DMCS_budynek.png")],
+    BIBLIOTEKA: [fix_path("images/BIBLIOTEKA/BIBLIOTEKA_znacznik.png"), fix_path("images/BIBLIOTEKA/BIBLIOTEKA_budynek.png")],
+    CJ: [fix_path("images/CJ/CJ_znacznik.png"), fix_path("images/CJ/CJ_budynek.png")],
+    ZATOKASPORTU: [fix_path("images/ZATOKASPORTU/ZATOKASPORTU_znacznik.png"), fix_path("images/ZATOKASPORTU/ZATOKASPORTU_budynek.png")],
+    WOIZ: [fix_path("images/WOIZ/WOIZ_znacznik.png"), fix_path("images/WOIZ/WOIZ_budynek.png")],
+    ARCH: [fix_path("images/ARCH/ARCH_znacznik.png"), fix_path("images/ARCH/ARCH_budynek.png")],
+    WFTIMS: [fix_path("images/WFTIMS/WFTIMS_znacznik.png"), fix_path("images/WFTIMS/WFTIMS_budynek.png")]
 }
 
 #PORTAL OFFSET

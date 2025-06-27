@@ -1,4 +1,4 @@
-from engine.static_entity import StaticEntity
+from engine.entities.static_entity import StaticEntity
 
 class DynamicEntity(StaticEntity):
     def __init__(self, x: int, y: int, width: int, height: int, color: tuple[int, int, int]):

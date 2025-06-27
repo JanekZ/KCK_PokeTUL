@@ -1,4 +1,6 @@
-import setup
+import os
+
+import engine.setup as setup
 import engine.constants as c
 
 def main() -> None:

@@ -1,5 +1,6 @@
 import pygame
-from entities.character import Character
+
+from engine.entities.character import Character
 
 class CollisionDetection:
     def __init__(self, obj: Character, d_xy: tuple[int, int]):
@@ -73,4 +74,3 @@ class CollisionDetection:
             return True
 
         return False
-
