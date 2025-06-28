@@ -16,7 +16,7 @@ cd KCK_PokeTUL
 
 Run:
 ```
-pytho3 -m database.migrate
+python3 -m database.migrate
 ```
 
 And finally, to start the game run:

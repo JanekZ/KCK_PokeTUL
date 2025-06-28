@@ -57,10 +57,16 @@ class InputBox:
         """Check if mouse is over the input box."""
         return self.rect.collidepoint(mouse_pos)
 
-def draw_text(surface: pygame.surface.Surface, text: str, pos: tuple[int, int], font=FONT, color=COLOR_TEXT) -> None:
+def draw_text(surface: pygame.surface.Surface, text: str, pos: tuple[int, int], font=FONT, color=COLOR_TEXT, center=False) -> None:
     """Render text on given surface at given position."""
     txt_surf = font.render(text, True, color)
-    surface.blit(txt_surf, pos)
+    txt_rect = txt_surf.get_rect()
+    if center:
+        txt_rect.centerx = pos[0]
+        txt_rect.y = pos[1]
+    else:
+        txt_rect.topleft = pos
+    surface.blit(txt_surf, txt_rect)
 
 def draw_button(surface: pygame.surface.Surface, center_pos: tuple[int, int], text: str, mouse_pos: tuple[int, int]) -> tuple[bool, pygame.rect.Rect]:
     """Draw button with hover effect and return (hovered, rect)."""
@@ -82,7 +88,7 @@ def login_screen(display: pygame.surface.Surface, clock: pygame.time.Clock) -> s
     """Main login screen loop, returns session_id on success."""
     screen_w, screen_h = display.get_size()
     center_x = screen_w // 2
-    start_y = screen_h // 2 - 140
+    start_y = screen_h // 2 - 200
 
     username_box = InputBox(center_x - 150, start_y + 70, 300, 40)
     password_box = InputBox(center_x - 150, start_y + 140, 300, 40, is_password=True)
@@ -103,7 +109,7 @@ def login_screen(display: pygame.surface.Surface, clock: pygame.time.Clock) -> s
             password_box.handle_event(event)
 
         display.fill(COLOR_BG)
-        draw_text(display, "Zaloguj się", (center_x - 100, start_y), font=pygame.font.SysFont("arial", 36, bold=True))
+        draw_text(display, "Zaloguj się", (center_x - 100, start_y - 40), font=pygame.font.SysFont("arial", 36, bold=True))
         draw_text(display, "Indeks Gracza:", (username_box.rect.x, username_box.rect.y - 30), font=SMALL_FONT)
         draw_text(display, "Hasło:", (password_box.rect.x, password_box.rect.y - 30), font=SMALL_FONT)
 
@@ -111,11 +117,11 @@ def login_screen(display: pygame.surface.Surface, clock: pygame.time.Clock) -> s
         password_box.draw(display)
 
         mouse_pos = pygame.mouse.get_pos()
-        login_hover, login_rect = draw_button(display, (center_x, password_box.rect.y + 70), "Zaloguj się", mouse_pos)
-        register_hover, register_rect = draw_button(display, (center_x, password_box.rect.y + 130), "Zarejestruj się", mouse_pos)
+        login_hover, login_rect = draw_button(display, (center_x, password_box.rect.y + 120), "Zaloguj się", mouse_pos)
+        register_hover, register_rect = draw_button(display, (center_x, password_box.rect.y + 180), "Zarejestruj się", mouse_pos)
 
         if error_message:
-            draw_text(display, error_message, (center_x - 150, register_rect.bottom + 15), font=SMALL_FONT, color=COLOR_ERROR)
+            draw_text(display, error_message, (center_x, register_rect.bottom + 30), font=SMALL_FONT, color=COLOR_ERROR, center=True)
 
         desired_cursor = pygame.SYSTEM_CURSOR_ARROW
 
@@ -161,7 +167,7 @@ def registration_screen(display: pygame.surface.Surface, clock: pygame.time.Cloc
     """Registration screen loop, returns True on successful registration."""
     screen_w, screen_h = display.get_size()
     center_x = screen_w // 2
-    start_y = screen_h // 2 - 180
+    start_y = screen_h // 2 - 240
 
     id_box = InputBox(center_x - 150, start_y + 70, 300, 40)
     name_box = InputBox(center_x - 150, start_y + 140, 300, 40)
@@ -185,7 +191,7 @@ def registration_screen(display: pygame.surface.Surface, clock: pygame.time.Cloc
             password_box.handle_event(event)
 
         display.fill(COLOR_BG)
-        draw_text(display, "Rejestracja", (center_x - 100, start_y), font=pygame.font.SysFont("arial", 36, bold=True))
+        draw_text(display, "Rejestracja", (center_x - 100, start_y - 40), font=pygame.font.SysFont("arial", 36, bold=True))
         draw_text(display, "Indeks Gracza:", (id_box.rect.x, id_box.rect.y - 30), font=SMALL_FONT)
         draw_text(display, "Imię Gracza:", (name_box.rect.x, name_box.rect.y - 30), font=SMALL_FONT)
         draw_text(display, "Hasło:", (password_box.rect.x, password_box.rect.y - 30), font=SMALL_FONT)
@@ -195,8 +201,8 @@ def registration_screen(display: pygame.surface.Surface, clock: pygame.time.Cloc
         password_box.draw(display)
 
         mouse_pos = pygame.mouse.get_pos()
-        register_hover, register_rect = draw_button(display, (center_x, password_box.rect.y + 70), "Zarejestruj", mouse_pos)
-        back_hover, back_rect = draw_button(display, (center_x, password_box.rect.y + 130), "Powrót do logowania", mouse_pos)
+        register_hover, register_rect = draw_button(display, (center_x, password_box.rect.y + 120), "Zarejestruj", mouse_pos)
+        back_hover, back_rect = draw_button(display, (center_x, password_box.rect.y + 180), "Powrót do logowania", mouse_pos)
 
         if error_message:
             draw_text(display, error_message, (center_x - 150, back_rect.bottom + 15), font=SMALL_FONT, color=COLOR_ERROR)
