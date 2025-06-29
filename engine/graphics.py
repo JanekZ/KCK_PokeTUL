@@ -43,7 +43,26 @@ class Graphics:
         for layer in self.layers:
             layer.update()
 
-# GETTERS AND SETTERS
 
     def set_layers(self, layers: list) -> None:
         self.layers = layers
+
+    def render_full_map(self, surface, player_pos):
+
+        self.canvas.fill((0, 0, 0))
+        scale = 0.1
+        for layer in self.layers:
+            for sprite in layer:
+                if hasattr(sprite, 'image') and hasattr(sprite, 'rect'):
+                    img = pygame.transform.scale(sprite.image,
+                                                 (int(sprite.rect.width * scale), int(sprite.rect.height * scale)))
+                    pos = (int(sprite.rect.x * scale), int(sprite.rect.y * scale))
+                    self.canvas.blit(img, pos)
+
+        if player_pos:
+            px = int(player_pos[0] * scale)
+            py = int(player_pos[1] * scale)
+            pygame.draw.circle(self.canvas, (255, 0, 0), (px, py), 4)
+
+        pygame.transform.scale(self.canvas, surface.get_size(), surface)
+        pygame.display.update()
