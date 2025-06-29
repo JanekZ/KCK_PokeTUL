@@ -5,6 +5,7 @@ import engine.constants as c
 
 from engine.utils.auth_screen import login_screen
 from engine.utils.login_session import load_session
+from engine.utils.splash_screen import splash_screen
 
 from database.utils.auth import Auth
 
@@ -22,6 +23,8 @@ def main() -> None:
     display = setup.get_display()
     game_states = setup.get_game_states()
     controller = setup.get_controller(display, clock, game_states, c.MAIN_SCREEN)
+
+    splash_screen(display, "images/PokeTUL_Logo.png")
 
     session_id = load_session()
 
