@@ -3,10 +3,14 @@ import engine.constants as c
 from engine.graphics import Graphics
 from engine.algorithms.dll_stack import DLLStack
 from engine.movement_processor import MovementProcessor
+from engine.ui import draw_ui
+import pygame
 
 
 class GameState:
     def __init__(self, layers: dict):
+
+        self.show_map = False #the minimap is hidden by default.
         """
         STATUS:
             Class properties used for showing the current status of the state.
@@ -60,7 +64,20 @@ class GameState:
 
         :param display: Pygame Surface object used as display to show all elements.
         """
-        self.graphics.render(display)
+        if self.show_map:
+            characters = [c for c in self.graphics.layers[4]]
+            if characters:
+                character = characters[0]
+                player_pos = (character.rect.x, character.rect.y)
+            else:
+                player_pos = (0, 0)
+
+            self.graphics.render_full_map(display, player_pos)
+        else:
+            self.graphics.render(display)
+            dummy_pos = (0, 0)
+            draw_ui(display, dummy_pos, show_menu=True)
+            pygame.display.update()
 
     def user_input(self, action: str, key: str|None = None) -> None:
         """
