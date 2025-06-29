@@ -55,6 +55,12 @@ class EventHandler:
                 self.left_command.execute(state, c.PUSH)
             if event.key == pygame.K_RIGHT:
                 self.right_command.execute(state, c.PUSH)
+
+            if event.key == pygame.K_m:
+                state.show_map = True
+            if event.key == pygame.K_ESCAPE:
+                state.show_map = False
+
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 self.up_command.execute(state, c.POP)
