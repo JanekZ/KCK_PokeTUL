@@ -25,7 +25,7 @@ def define() -> None:
     # Define 'sessions' table
     database.execute('''
         CREATE TABLE IF NOT EXISTS sessions (
-            id TEXT PRIMARY KEY UNIQUE,
+            id TEXT PRIMARY KEY NOT NULL,
             player_id INTEGER NOT NULL,
             created DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (player_id) REFERENCES players(id)
