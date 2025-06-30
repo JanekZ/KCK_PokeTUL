@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="39" height="29" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="198">
+ <tileset firstgid="1" source="../../../../../../../Downloads/modern_outside.tsx"/>
+ <tileset firstgid="4097" source="../../../../../../../Downloads/test.tsx"/>
+ <tileset firstgid="4161" source="../tilesets/objects.tsx"/>
+ <tileset firstgid="4192" source="../tilesets/Grass.tsx"/>
+ <tileset firstgid="4195" source="Zrzut ekranu 2025-06-29 193145.tsx"/>
+ <tileset firstgid="4196" source="Zrzut ekranu 2025-06-29 193928.tsx"/>
+ <tileset firstgid="4197" source="Zrzut ekranu 2025-06-29 194214.tsx"/>
+ <tileset firstgid="4198" source="Zrzut ekranu 2025-06-30 012742.tsx"/>
+ <layer id="1" name="Terrain" width="39" height="29">
+  <data encoding="csv">
+4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4107,4099,4099,
+4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4107,4099,4099,
+4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4121,4099,4099,
+4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4121,4099,4099,
+4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4097,4121,4099,4099,
+4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4105,4121,4099,4099,
+4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,1073745929,1073745930,4099,4101,4103,4103,4110,4112,4103,4103,4103,4103,4103,4103,4103,4103,4103,4103,4099,4099,4099,4099,4099,1610616836,4097,4121,4099,4099,
+4111,4111,4111,4112,3758100484,4099,4099,4099,4099,4099,4099,4097,4098,4099,4101,4103,4103,4118,4120,4117,4117,4104,4103,4103,4103,4103,4103,4103,4103,4099,4099,4099,4099,4099,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4105,4106,4099,4101,4101,4101,4103,4103,4117,4117,4129,4105,4105,4105,4105,4105,4105,4105,4099,4121,4113,4113,4121,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4105,4105,4106,4099,3221229578,1073745929,3221229577,3221229577,3221229577,3221229577,3221229577,4121,4113,4113,4121,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4097,4101,1073745921,4100,4097,4099,3221229578,1073745929,3221229601,1073745921,4097,4111,4111,4111,4111,4111,4111,4111,4112,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4097,4097,4101,4097,1073745921,4099,2147487746,4097,4097,4097,4097,4119,4119,4119,4119,4119,4119,4119,4120,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4097,4101,4097,4101,1073745921,4099,2147487746,4097,4097,4097,4103,4103,4103,4102,4103,4103,4103,4103,4103,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4101,4097,4097,1073745921,4101,4099,2147487746,4097,4097,4097,4103,4103,4103,4104,4103,4103,4103,4103,4103,1610616836,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4110,4111,4112,1073745921,1073745921,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4118,4119,4120,1073745921,1073745921,4099,2147487746,4097,4097,4097,4099,4115,4099,4099,4111,4111,4111,4111,4099,4099,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4105,4097,4097,1073745921,1073745921,1073745921,4099,2147487746,4121,4113,4121,4122,4123,4124,4118,4119,4119,4119,4119,4120,4099,4097,4121,4099,4099,
+4135,4135,4135,4136,3758100484,4099,4099,4099,4099,4099,4099,2147487754,4106,4099,4099,4099,4099,4099,4099,4099,4099,2147487746,4121,4113,4121,4113,4130,4113,4103,4102,4103,4103,4103,4103,4099,4097,4121,4099,4099,
+4119,4119,4119,4120,3758100484,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,3221229578,1073745929,1073745929,1073745929,1073745929,3221229601,4121,4113,4121,1073745921,1073745921,1073745921,4103,4102,4104,4103,4103,4103,4099,4097,4121,4099,4099,
+4114,4115,4115,4116,1073745921,1073745921,1073745921,1073745921,1073745921,1073745921,4129,4105,4105,2684358689,4098,4099,3758100489,4101,4100,4100,4100,4100,4101,4100,4100,4100,4100,4100,4100,4101,4100,4100,4101,4100,4099,4100,4121,4099,4099,
+4122,4123,4123,4124,4114,4115,4115,4115,4115,4116,4098,4099,4099,2147487746,4098,4099,3758100489,2684358660,1073745921,1073745921,1073745921,4114,4115,4115,4115,4116,1073745921,4097,4097,1610616836,4097,4097,536875012,4097,4099,4097,4121,4099,4099,
+4121,4113,4130,4113,4122,4123,4123,4123,4123,4124,4098,4099,4099,2147487754,4106,4099,3758100489,2684358660,4114,4115,4116,4122,4123,4123,4123,4124,4114,4115,4116,1610616836,4097,4097,536875012,4097,4099,4105,4121,4099,4099,
+4121,4097,2684358660,4097,4113,4113,4113,4113,4113,4113,1610616865,4099,4099,4099,4099,4099,3758100489,2684358660,4122,4123,4124,4113,4113,4113,4113,4113,4122,4123,4124,1610616836,4097,4097,536875012,4097,4099,3221229578,4121,4099,4099,
+4121,4097,4101,4100,4100,4100,4100,4100,4100,4101,1073745921,4099,4099,1073745921,4099,4099,3758100489,2684358660,4113,4113,4113,4113,4113,4113,4113,4113,4113,4113,4113,1610616836,4097,4097,536875012,4097,4099,2147487746,4121,4099,4099,
+4114,4116,4097,4097,4097,1073745921,1073745921,1073745921,1073745921,4101,4100,4100,4100,4100,4099,4099,4100,4100,4100,4100,4100,4100,3221229572,3221229572,4101,3221229572,3221229572,3221229572,3221229572,4101,4100,4100,4101,4097,4099,2147487746,4121,4099,4099,
+4122,4124,4097,4097,4097,4097,4097,4097,4129,4105,4105,4105,4105,4105,4099,4099,536875010,536875010,536875010,536875010,536875010,536875010,536875010,536875010,2684358660,4105,4105,4105,4105,536875012,4105,4105,4105,4105,4099,2147487746,4121,4099,4099,
+4121,4121,4097,4097,4097,4097,4097,4097,4098,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4099,4114,4116,4099,4099,
+4121,4121,4115,4115,4115,4115,4115,4115,4115,4099,4099,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4115,4116,4122,4124,4099,4099,
+4121,4121,4123,4123,4123,4123,4123,4123,4123,4099,4099,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4123,4124,4121,4121,4099,4099
+</data>
+ </layer>
+ <layer id="2" name="Terrain Top" width="39" height="29">
+  <data encoding="csv">
+4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,0,0,0,
+4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,4192,0,1936,1937,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2000,2001,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2064,2065,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4110,4111,4111,4111,4111,4111,4111,4111,4111,4111,4111,4111,4111,4112,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4118,4119,4119,4119,4119,4119,4119,4119,4119,4119,4119,4119,4119,4120,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4131,0,0,0,0,0,0,0,0,4114,4115,4115,4116,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4122,4123,4123,4124,0,0,0,1936,1937,
+0,0,0,0,0,2147485195,2147485194,2147485193,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2000,2001,
+0,0,0,0,0,2147485259,2147485258,2147485257,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2064,2065,
+0,0,0,0,0,2147485445,2147485444,2147485443,2147485442,0,0,0,1801,1802,1803,0,0,0,0,0,0,0,0,0,0,4110,0,0,0,0,0,0,0,0,0,0,0,1618,1619,
+0,0,0,0,0,2147485509,2147485508,2147485507,2147485506,0,0,0,1865,1866,1867,0,0,0,0,0,0,0,4097,4097,4097,4118,0,0,0,0,0,0,0,0,0,0,0,1682,1683,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1746,1747,
+0,0,0,0,0,1545,1546,1547,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1936,1937,
+0,0,0,0,0,1609,1610,1611,0,0,0,0,1801,1802,1803,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2000,2001,
+0,0,0,0,0,0,0,0,0,0,0,0,1865,1866,1867,0,0,0,0,0,0,0,0,0,0,4114,0,4116,4110,4128,4128,4128,4128,4112,0,0,0,2064,2065,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4097,4097,4097,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,1801,1802,1803,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4097,4097,4097,0,0,0,0,0,4131,0,0,0,0,0,0,0,0,
+0,0,0,0,0,1865,1866,1867,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4097,4097,4097,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,1936,1937,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,4131,0,0,0,0,0,0,0,0,2000,2001,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1936,1937,
+0,0,0,0,0,0,0,0,0,0,0,2064,2065,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2000,2001,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4131,0,0,0,0,0,0,0,0,2064,2065,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1618,1619,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1682,1683,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1746,1747,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1940,1941,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2004,2005,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2068,2069
+</data>
+ </layer>
+ <objectgroup id="4" name="Entities">
+  <object id="90" name="Player" x="637.333" y="1725.33">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="pos" value="house"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="92" name="Character" x="864.667" y="1522.67">
+   <properties>
+    <property name="change_direction" type="bool" value="false"/>
+    <property name="character_id" value="o1"/>
+    <property name="direction" value="right"/>
+    <property name="graphic" value="blond"/>
+    <property name="radius" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="98" name="Character" x="656.334" y="846.333">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="o3"/>
+    <property name="direction" value="right"/>
+    <property name="graphic" value="young_guy"/>
+    <property name="radius" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="99" name="Character" x="1118.67" y="732">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="o4"/>
+    <property name="direction" value="down"/>
+    <property name="graphic" value="hat_girl"/>
+    <property name="radius" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="100" name="Character" x="2273.33" y="1267.34">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="o5"/>
+    <property name="direction" value="down"/>
+    <property name="graphic" value="straw"/>
+    <property name="radius" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="101" name="Character" x="477.33" y="1053">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="o2"/>
+    <property name="direction" value="up"/>
+    <property name="graphic" value="purple_girl"/>
+    <property name="radius" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="189" name="Player" x="183" y="1502">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="pos" value="cj"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="190" name="Player" x="1887" y="1564.5">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="pos" value="library"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="191" name="Player" x="2012.67" y="1248">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="pos" value="dmcs"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="193" name="Player" x="1379.67" y="599.667">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="pos" value="ftims"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="Monsters">
+  <object id="27" gid="4192" x="1920" y="1344" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="28" gid="4192" x="1984" y="1536" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="29" gid="4192" x="1984" y="1344" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="30" gid="4192" x="1920" y="1408" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="31" gid="4192" x="1920" y="1472" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="32" gid="4192" x="1984" y="1472" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="33" gid="4192" x="1920" y="1536" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="34" gid="4192" x="2112" y="1472" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="35" gid="4192" x="2112" y="1408" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="36" gid="4192" x="2112" y="1344" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="37" gid="4192" x="2240" y="1088" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="38" gid="4192" x="2240" y="1216" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="39" gid="4192" x="2240" y="1152" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="40" gid="4192" x="2240" y="1024" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="41" gid="4192" x="2240" y="960" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="42" gid="4192" x="2240" y="896" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="43" gid="4192" x="2240" y="832" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="44" gid="4192" x="2240" y="768" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="45" gid="4192" x="2240" y="704" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="46" gid="4192" x="2240" y="576" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="47" gid="4192" x="2240" y="512" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="48" gid="4192" x="2240" y="448" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="49" gid="4192" x="2240" y="640" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="52" gid="4192" x="64" y="1472" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="53" gid="4192" x="64" y="1536" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="54" gid="4192" x="192" y="1472" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="55" gid="4192" x="448" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="56" gid="4192" x="256" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="57" gid="4192" x="320" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="58" gid="4192" x="384" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="59" gid="4192" x="512" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="60" gid="4192" x="576" y="1280" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="62" gid="4192" x="1152" y="1024" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="63" gid="4192" x="1152" y="960" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="64" gid="4192" x="1216" y="960" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="65" gid="4192" x="1216" y="1024" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="66" gid="4192" x="1216" y="1088" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="67" gid="4192" x="1152" y="1088" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="68" gid="4192" x="704" y="512" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+  <object id="91" gid="4192" x="1984" y="1408" width="64" height="64">
+   <properties>
+    <property name="biome" value="forest"/>
+    <property name="level" type="int" value="10"/>
+    <property name="monsters" value="Atrox,Pouch"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="Objects">
+  <object id="3" gid="4178" x="124" y="1660" width="64" height="128"/>
+  <object id="4" gid="4178" x="192" y="1664" width="64" height="128"/>
+  <object id="5" gid="4178" x="256" y="1664" width="64" height="128"/>
+  <object id="6" gid="4178" x="320" y="1664" width="64" height="128"/>
+  <object id="7" gid="4178" x="384" y="1664" width="64" height="128"/>
+  <object id="8" gid="4178" x="448" y="1664" width="64" height="128"/>
+  <object id="11" gid="4176" x="198.667" y="1724" width="128" height="192"/>
+  <object id="12" gid="4176" x="325" y="1722" width="128" height="192"/>
+  <object id="13" gid="4176" x="439.667" y="1727.67" width="128" height="192"/>
+  <object id="15" gid="4178" x="128" y="1728" width="64" height="128"/>
+  <object id="16" gid="4178" x="2066" y="1637" width="42.5" height="85"/>
+  <object id="18" gid="4178" x="2017.75" y="1634.5" width="42.5" height="85"/>
+  <object id="19" gid="4178" x="1969.75" y="1634.5" width="42.5" height="85"/>
+  <object id="25" gid="4178" x="2114" y="1595" width="44.5" height="89"/>
+  <object id="26" gid="4178" x="2138" y="1537" width="37" height="74"/>
+  <object id="69" gid="4177" x="2176" y="256" width="128" height="192"/>
+  <object id="70" gid="4177" x="2048" y="256" width="128" height="192"/>
+  <object id="71" gid="4177" x="1920" y="256" width="128" height="192"/>
+  <object id="72" gid="4177" x="1792" y="256" width="128" height="192"/>
+  <object id="73" gid="4177" x="1664" y="256" width="128" height="192"/>
+  <object id="74" gid="4177" x="1536" y="256" width="128" height="192"/>
+  <object id="75" gid="4177" x="1408" y="256" width="128" height="192"/>
+  <object id="76" gid="4177" x="1280" y="256" width="128" height="192"/>
+  <object id="77" gid="4177" x="1152" y="256" width="128" height="192"/>
+  <object id="78" gid="4177" x="1024" y="256" width="128" height="192"/>
+  <object id="79" gid="4177" x="896" y="256" width="128" height="192"/>
+  <object id="81" gid="4177" x="768" y="256" width="128" height="192"/>
+  <object id="82" gid="4177" x="640" y="256" width="128" height="192"/>
+  <object id="83" gid="4177" x="512" y="256" width="128" height="192"/>
+  <object id="84" gid="4177" x="384" y="256" width="128" height="192"/>
+  <object id="85" gid="4177" x="256" y="256" width="128" height="192"/>
+  <object id="86" gid="4177" x="128" y="256" width="128" height="192"/>
+  <object id="87" gid="4177" x="0" y="256" width="128" height="192"/>
+  <object id="103" gid="4195" x="960" y="576" width="893" height="316"/>
+  <object id="106" gid="4197" x="1410" y="1153.33" width="188.667" height="391"/>
+  <object id="197" gid="4176" x="1501.33" y="762.667" width="100" height="158.667"/>
+ </objectgroup>
+ <objectgroup id="5" name="Collisions">
+  <object id="116" x="713.333" y="1705.17" width="1532.67" height="62.1667"/>
+  <object id="118" x="2246" y="1636" width="120.667" height="110"/>
+  <object id="120" x="2301.67" y="0.666667" width="51.3333" height="1666.67"/>
+  <object id="121" x="262" y="1334.67" width="374.667" height="96.6667"/>
+  <object id="122" x="719.333" y="1234" width="98.6667" height="171.333"/>
+  <object id="123" x="327.333" y="1098" width="170.667" height="76"/>
+  <object id="124" x="778" y="911.333" width="182.667" height="88.3333"/>
+  <object id="125" x="964.667" y="889.667" width="186" height="115.667"/>
+  <object id="128" x="774" y="661.333" width="175.333" height="82.6667"/>
+  <object id="129" x="320.667" y="529.333" width="188.667" height="108.667"/>
+  <object id="130" x="319.667" y="623.333" width="254" height="138.667"/>
+  <object id="131" x="331.333" y="838" width="188.667" height="122.667"/>
+  <object id="137" x="1156.33" y="1331.67" width="700.667" height="157.333"/>
+  <object id="138" x="1341.33" y="1268" width="320.667" height="83.3333"/>
+  <object id="144" x="1436.67" y="1062.67" width="141.333" height="66.6667"/>
+  <object id="148" x="1607.33" y="952.667" width="174" height="146"/>
+  <object id="150" x="1805.33" y="954.667" width="356.667" height="202.667"/>
+  <object id="151" x="1617.33" y="619.333" width="541.333" height="208"/>
+  <object id="153" x="1405.33" y="485.333" width="438" height="10"/>
+  <object id="154" x="1090" y="524" width="237.333" height="24.6667"/>
+  <object id="155" x="965.333" y="475.333" width="108.667" height="13.3333"/>
+  <object id="158" x="215.333" y="458.667" width="26" height="753.333"/>
+  <object id="159" x="270" y="1263.33" width="356" height="44"/>
+  <object id="160" x="228" y="1229.33" width="20.6667" height="54"/>
+  <object id="161" x="38" y="1410.67" width="22.6667" height="122"/>
+  <object id="162" x="73.3333" y="1374" width="172.667" height="19.3333"/>
+  <object id="163" x="70.3333" y="1516.67" width="74" height="39.3333"/>
+  <object id="166" x="131.333" y="1720" width="444.667" height="40.6667"/>
+  <object id="171" x="534.667" y="1797.33" width="219.333" height="19.3333"/>
+  <object id="172" x="0.666667" y="431.333" width="236.667" height="34"/>
+  <object id="174" x="-12" y="254.667" width="25.3333" height="187.333"/>
+  <object id="196" x="1926" y="366" width="246" height="269"/>
+ </objectgroup>
+ <objectgroup id="6" name="Transition">
+  <object id="175" x="134.333" y="1413.67" width="52.6667" height="4.66667">
+   <properties>
+    <property name="pos" value="world"/>
+    <property name="target" value="cj"/>
+   </properties>
+  </object>
+  <object id="177" x="1856.35" y="1418.6" width="5.09091" height="68.3636">
+   <properties>
+    <property name="pos" value="world"/>
+    <property name="target" value="library"/>
+   </properties>
+  </object>
+  <object id="178" x="1934.69" y="1201.94" width="34.0833" height="5.5">
+   <properties>
+    <property name="pos" value="world"/>
+    <property name="target" value="dmcs"/>
+   </properties>
+  </object>
+  <object id="182" x="1349.08" y="500.856" width="47.4545" height="4">
+   <properties>
+    <property name="pos" value="world"/>
+    <property name="target" value="ftims"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

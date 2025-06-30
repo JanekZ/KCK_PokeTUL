@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="23" tilewidth="64" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="37">
+ <tileset firstgid="1" source="../tilesets/indoor.tsx"/>
+ <layer id="1" name="Terrain" width="20" height="23">
+  <data encoding="csv">
+0,0,0,0,0,6,7,7,7,7,7,7,7,7,7,7,7,8,0,0,
+0,0,0,0,0,16,17,29,30,7,17,29,30,7,17,29,30,18,0,0,
+0,0,0,0,0,36,27,39,40,7,27,39,40,7,27,39,40,28,0,0,
+0,0,0,0,0,36,47,47,47,7,47,47,47,7,47,47,47,38,0,0,
+0,0,0,0,0,36,47,47,47,7,47,47,47,7,47,47,47,48,0,0,
+0,0,0,0,0,36,47,47,47,7,47,47,47,7,47,47,47,48,0,0,
+0,0,0,0,0,46,47,47,47,7,47,47,47,7,47,47,47,48,0,0,
+0,0,0,0,0,56,7,47,7,7,7,47,7,7,7,47,7,7,7,7,
+0,0,0,0,0,46,17,47,17,17,17,47,17,17,17,47,17,17,17,17,
+0,6,7,7,7,7,27,47,27,27,27,47,27,27,27,47,27,27,27,27,
+0,16,17,17,17,17,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
+0,26,27,27,27,27,47,47,47,47,47,47,47,47,47,47,47,47,47,47,
+0,36,37,37,37,37,47,47,47,47,47,57,57,57,57,57,57,57,57,57,
+0,46,47,47,47,47,47,6,7,47,47,7,8,0,0,0,0,0,0,0,
+0,46,47,47,47,47,47,16,17,47,47,17,18,0,0,0,0,0,0,0,
+0,56,57,57,47,47,47,26,27,47,47,27,28,0,0,0,0,0,0,0,
+0,0,0,0,47,47,47,36,37,47,47,47,38,0,0,0,0,0,0,0,
+0,0,0,0,47,47,47,36,47,47,47,47,48,0,0,0,0,0,0,0,
+0,0,0,47,47,47,47,36,47,47,47,47,48,0,0,0,0,0,0,0,
+0,47,47,47,47,47,57,56,57,47,47,57,58,0,0,0,0,0,0,0,
+0,47,47,47,47,57,0,0,36,47,47,48,0,0,0,0,0,0,0,0,
+47,47,47,47,57,0,0,0,46,9,10,48,0,0,0,0,0,0,0,0,
+47,47,57,57,0,0,0,0,56,19,20,58,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Terrain Top" width="20" height="23">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,76,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,86,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Entities">
+  <object id="33" name="Player" x="640" y="1152">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="pos" value="world"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="Character" x="733" y="282">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="p4"/>
+    <property name="direction" value="down"/>
+    <property name="graphic" value="straw"/>
+    <property name="radius" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="35" name="Character" x="992" y="281">
+   <properties>
+    <property name="change_direction" type="bool" value="true"/>
+    <property name="character_id" value="p5"/>
+    <property name="direction" value="down"/>
+    <property name="graphic" value="young_guy"/>
+    <property name="radius" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" name="Character" x="478" y="282">
+   <properties>
+    <property name="character_id" value="Nurse"/>
+    <property name="direction" value="down"/>
+    <property name="graphic" value="purple_girl"/>
+    <property name="radius" value="0"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="Monsters"/>
+ <objectgroup id="3" name="Collisions">
+  <object id="2" x="714" y="1231" width="41" height="228"/>
+  <object id="3" x="519" y="1232" width="46" height="225"/>
+  <object id="4" x="767" y="884" width="41" height="382"/>
+  <object id="5" x="472" y="888" width="33" height="340"/>
+  <object id="7" x="463" y="795" width="110" height="88"/>
+  <object id="8" x="519" y="898" width="47" height="83"/>
+  <object id="9" x="719" y="896" width="38" height="88"/>
+  <object id="11" x="717" y="753" width="558" height="42"/>
+  <object id="12" x="719" y="811" width="92" height="61"/>
+  <object id="13" x="380" y="947" width="66" height="49"/>
+  <object id="14" x="345" y="751" width="38" height="201"/>
+  <object id="15" x="345" y="504" width="37" height="244"/>
+  <object id="16" x="385" y="426" width="52" height="151"/>
+  <object id="17" x="523" y="421" width="171" height="150"/>
+  <object id="18" x="786" y="422" width="159" height="148"/>
+  <object id="19" x="1038" y="424" width="235" height="144"/>
+  <object id="20" x="1232" y="588" width="38" height="161"/>
+  <object id="21" x="1076" y="53" width="33" height="434"/>
+  <object id="22" x="822" y="47" width="85" height="440"/>
+  <object id="23" x="564" y="39" width="91" height="449"/>
+  <object id="24" x="345" y="40" width="39" height="443"/>
+  <object id="25" x="374" y="20" width="198" height="50"/>
+  <object id="26" x="641" y="18" width="182" height="45"/>
+  <object id="27" x="898" y="20" width="198" height="43"/>
+ </objectgroup>
+ <objectgroup id="4" name="Transition">
+  <object id="1" x="614.667" y="1388" width="52.6667" height="20.6667">
+   <properties>
+    <property name="pos" value="dmcs"/>
+    <property name="target" value="world"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="Objects"/>
+</map>
